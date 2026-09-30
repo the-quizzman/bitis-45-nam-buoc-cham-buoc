@@ -1,0 +1,6 @@
+{
+  "name": "Biti's 45 Năm - Giải Chạy Bước Chạm Bước",
+  "description": "Website chính thức Giải chạy Kỷ niệm 45 năm thành lập Biti's - Bước chạm Bước: Ghi dấu hiện tại, Tiếp bước tương lai.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
