@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ChevronRight, Calendar, MapPin, Sparkles, Clock, Compass } from 'lucide-react';
+import { ArrowRight, ChevronRight, Clock } from 'lucide-react';
 
 interface HeroProps {
   onRegisterClick: () => void;
@@ -45,7 +45,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
   return (
     <section
       id="hero"
-      className="relative min-h-[720px] lg:min-h-[820px] pt-32 pb-20 flex items-center bg-[#FAF7F1] text-[#18233A] overflow-hidden"
+      className="relative min-h-[calc(100vh-76px)] lg:h-[calc(100vh-76px)] pt-24 lg:pt-0 pb-12 lg:pb-0 flex items-center bg-[#FAF7F1] text-[#18233A] overflow-hidden"
     >
       {/* Subtle Editorial Grid Lines Background */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -56,13 +56,13 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* LEFT COLUMN: ~58% (7 cols on 12-col grid) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             
             {/* Small Anniversary Eyebrow */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-3 lg:mb-4">
               <span className="w-2 h-2 rounded-full bg-[#F26522]" />
               <span className="text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-[#005EB8]">
                 KỶ NIỆM 45 NĂM BITI’S · 1982–2027
@@ -70,10 +70,10 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             </div>
 
             {/* Large Campaign Headline: BƯỚC CHẠM BƯỚC */}
-            <h1 className="font-heading font-black text-6xl sm:text-7xl md:text-8xl xl:text-[104px] uppercase tracking-tighter leading-[0.88] text-[#18233A]">
+            <h1 className="font-heading font-black text-5xl sm:text-6xl md:text-7xl xl:text-[88px] uppercase tracking-tighter leading-[0.9] text-[#18233A]">
               <span className="block">BƯỚC</span>
-              <span className="block mt-1">
-                <span className="text-[#F26522] italic font-serif font-bold lowercase tracking-normal text-[0.85em] mr-2">
+              <span className="block mt-0.5">
+                <span className="text-[#F26522] italic font-serif font-bold lowercase tracking-normal text-[0.88em] mr-2">
                   chạm
                 </span>
                 <span>BƯỚC</span>
@@ -81,71 +81,71 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             </h1>
 
             {/* Core Message / Tagline */}
-            <div className="mt-6 flex items-center gap-3">
-              <div className="h-0.5 w-8 bg-[#F26522]" />
-              <p className="font-heading font-bold text-lg sm:text-2xl text-[#18233A] tracking-tight">
+            <div className="mt-3 lg:mt-4 flex items-center gap-2.5">
+              <div className="h-0.5 w-6 bg-[#F26522]" />
+              <p className="font-heading font-bold text-base sm:text-xl text-[#18233A] tracking-tight">
                 Ghi dấu hiện tại, tiếp bước tương lai
               </p>
             </div>
 
             {/* Short Emotional Narrative (max 2-3 lines) */}
-            <p className="mt-4 text-[#526077] text-base sm:text-lg leading-relaxed max-w-xl font-normal">
+            <p className="mt-2.5 lg:mt-3 text-[#526077] text-sm sm:text-base leading-relaxed max-w-xl font-normal">
               45 năm từ những bước chân đầu tiên đến triệu bước chân tiếp nối.
               Một hành trình kết nối gia đình, cộng đồng và những thế hệ Việt Nam.
             </p>
 
-            {/* ONE Compact Event Information Strip (NOT two separate white cards) */}
-            <div className="mt-8 pt-6 border-t border-[#EEE5D7] grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {/* ONE Compact Event Information Strip */}
+            <div className="mt-5 lg:mt-6 pt-4 border-t border-[#EEE5D7] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5">
               {/* Date */}
               <div>
-                <span className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Thời gian
                 </span>
-                <span className="block font-heading font-black text-base sm:text-lg text-[#18233A] mt-0.5">
+                <span className="block font-heading font-black text-sm sm:text-base text-[#18233A] mt-0.5">
                   07.03.2027
                 </span>
-                <span className="block text-xs text-[#526077]">Chủ nhật · 04:30 AM</span>
+                <span className="block text-[11px] text-[#526077]">Chủ nhật · 04:30 AM</span>
               </div>
 
               {/* Location */}
               <div>
-                <span className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Địa điểm
                 </span>
-                <span className="block font-heading font-black text-base sm:text-lg text-[#18233A] mt-0.5">
+                <span className="block font-heading font-black text-sm sm:text-base text-[#18233A] mt-0.5">
                   KĐT Sala
                 </span>
-                <span className="block text-xs text-[#526077]">TP. Thủ Đức, TP.HCM</span>
+                <span className="block text-[11px] text-[#526077]">TP. Thủ Đức, TP.HCM</span>
               </div>
 
               {/* Distances */}
               <div>
-                <span className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Cự ly thi đấu
                 </span>
-                <span className="block font-heading font-black text-base sm:text-lg text-[#18233A] mt-0.5">
+                <span className="block font-heading font-black text-sm sm:text-base text-[#18233A] mt-0.5">
                   5K · 10K · 21K
                 </span>
-                <span className="block text-xs text-[#526077]">Chuẩn cung đường Sala</span>
+                <span className="block text-[11px] text-[#526077]">Chuẩn cung đường Sala</span>
               </div>
 
               {/* Special Category */}
               <div>
-                <span className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#F26522]">
+                <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#F26522]">
                   Đặc quyền
                 </span>
-                <span className="block font-heading font-black text-base sm:text-lg text-[#18233A] mt-0.5">
+                <span className="block font-heading font-black text-sm sm:text-base text-[#18233A] mt-0.5">
                   Tiếp sức gia đình
                 </span>
-                <span className="block text-xs text-[#526077]">Đội hình 3 thế hệ</span>
+                <span className="block text-[11px] text-[#526077]">Đội hình 3 thế hệ</span>
               </div>
             </div>
 
             {/* Action CTAs */}
-            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div className="mt-5 lg:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <button
                 onClick={onRegisterClick}
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-sm uppercase tracking-wider shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
               >
                 <span>Đăng ký tham gia</span>
                 <ArrowRight className="w-4 h-4" />
@@ -153,7 +153,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
 
               <button
                 onClick={onExploreClick}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-transparent hover:bg-black/5 text-[#18233A] border border-[#18233A]/20 hover:border-[#18233A] font-heading font-bold text-sm tracking-wide uppercase transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-transparent hover:bg-black/5 text-[#18233A] border border-[#18233A]/20 hover:border-[#18233A] font-heading font-bold text-xs tracking-wide uppercase transition-all cursor-pointer"
               >
                 <span>Xem cự ly & lộ trình</span>
                 <ChevronRight className="w-4 h-4 text-[#8C9BAE]" />
@@ -161,7 +161,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             </div>
 
             {/* Live Countdown Micro Ticker */}
-            <div className="mt-8 inline-flex items-center gap-4 px-4 py-2 rounded-xl bg-[#EEE5D7]/50 border border-[#EEE5D7] self-start text-xs font-mono text-[#18233A]">
+            <div className="mt-4 lg:mt-5 inline-flex items-center gap-3 px-3.5 py-1.5 rounded-lg bg-[#EEE5D7]/50 border border-[#EEE5D7] self-start text-xs font-mono text-[#18233A]">
               <span className="flex items-center gap-1.5 font-bold text-[#F26522]">
                 <Clock className="w-3.5 h-3.5" />
                 <span>ĐẾM NGƯỢC:</span>
@@ -175,12 +175,11 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
           </div>
 
           {/* RIGHT COLUMN: ~42% (5 cols on 12-col grid) */}
-          {/* Integrated Editorial Visual (NOT a separate UI card with duplicate title) */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-lg lg:max-w-none">
+            <div className="relative mx-auto max-w-md lg:max-w-none">
               
-              {/* Main Artwork Container (Refined radius 20-24px, integrated styling) */}
-              <div className="relative rounded-[24px] overflow-hidden bg-[#18233A] shadow-[0_20px_50px_rgba(24,35,58,0.12)] border border-[#EEE5D7]/60 aspect-[4/5] sm:aspect-[4/5]">
+              {/* Main Artwork Container (Restrained height so it never exceeds 1 viewport) */}
+              <div className="relative rounded-[22px] overflow-hidden bg-[#18233A] shadow-xl border border-[#EEE5D7]/70 aspect-[4/4.8] max-h-[460px] lg:max-h-[500px] w-full mx-auto">
                 
                 {/* Athletic Lifestyle Photography */}
                 <img
@@ -189,12 +188,12 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
                   className="absolute inset-0 w-full h-full object-cover object-center filter saturate-110 brightness-95"
                 />
 
-                {/* Subtle Editorial Gradient Overlay for Text Readability */}
+                {/* Subtle Editorial Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#18233A] via-[#18233A]/30 to-black/20" />
 
                 {/* Top Badge: 45th Anniversary Heritage Mark */}
-                <div className="absolute top-6 left-6 right-6 flex items-center justify-between text-white z-10">
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 backdrop-blur-md border border-white/15 text-xs font-mono font-bold tracking-wider">
+                <div className="absolute top-5 left-5 right-5 flex items-center justify-between text-white z-10">
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-black/40 backdrop-blur-md border border-white/15 text-[11px] font-mono font-bold tracking-wider">
                     <span className="w-2 h-2 rounded-full bg-[#F26522]" />
                     <span>EST. 1982 → 2027</span>
                   </div>
@@ -209,37 +208,37 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
                   </div>
                 </div>
 
-                {/* Center / Lower-Third: Integrated Race Bib Graphic */}
-                <div className="absolute bottom-6 left-6 right-6 z-10">
-                  <div className="bg-[#FAF7F1]/95 backdrop-blur-md rounded-2xl p-5 border border-white/60 shadow-lg text-[#18233A]">
+                {/* Integrated Race Bib Graphic */}
+                <div className="absolute bottom-5 left-5 right-5 z-10">
+                  <div className="bg-[#FAF7F1]/95 backdrop-blur-md rounded-xl p-4 border border-white/60 shadow-lg text-[#18233A]">
                     
                     {/* Race Bib Header */}
-                    <div className="flex items-center justify-between pb-3 border-b border-[#EEE5D7]">
+                    <div className="flex items-center justify-between pb-2 border-b border-[#EEE5D7]">
                       <div className="flex items-center gap-2">
-                        <span className="font-heading font-black text-sm text-[#005EB8] tracking-tight">
+                        <span className="font-heading font-black text-xs text-[#005EB8] tracking-tight">
                           BITI’S 45
                         </span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C9BAE]">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-[#8C9BAE]">
                           OFFICIAL RACE
                         </span>
                       </div>
-                      <span className="px-2 py-0.5 rounded bg-[#F26522] text-white text-[10px] font-bold uppercase tracking-wider">
+                      <span className="px-2 py-0.5 rounded bg-[#F26522] text-white text-[9px] font-bold uppercase tracking-wider">
                         CHIP TIMED
                       </span>
                     </div>
 
                     {/* Big Bold BIB Number */}
-                    <div className="flex items-baseline justify-between py-2">
-                      <span className="font-mono font-black text-4xl sm:text-5xl text-[#18233A] tracking-tighter">
+                    <div className="flex items-baseline justify-between py-1.5">
+                      <span className="font-mono font-black text-3xl sm:text-4xl text-[#18233A] tracking-tighter">
                         #1982-2027
                       </span>
-                      <span className="text-xs font-heading font-bold text-[#526077] uppercase tracking-wide">
+                      <span className="text-[11px] font-heading font-bold text-[#526077] uppercase tracking-wide">
                         SALA RUN
                       </span>
                     </div>
 
                     {/* Bib Footer Data */}
-                    <div className="pt-2 border-t border-[#EEE5D7] flex items-center justify-between text-xs text-[#526077]">
+                    <div className="pt-2 border-t border-[#EEE5D7] flex items-center justify-between text-[11px] text-[#526077]">
                       <span>Cự ly: <strong>5K · 10K · 21K</strong></span>
                       <span className="text-[#005EB8] font-bold">Nâng niu bước chạy Việt</span>
                     </div>

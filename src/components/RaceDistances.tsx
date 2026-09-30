@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Clock, Users, Shield, Sparkles } from 'lucide-react';
+import { ArrowRight, Shield } from 'lucide-react';
 import { DistanceType } from '../types';
 
 interface RaceDistancesProps {
@@ -67,80 +67,77 @@ export const RaceDistances: React.FC<RaceDistancesProps> = ({
   ];
 
   return (
-    <section id="distances" className="py-24 sm:py-32 bg-[#FAF7F1] text-[#18233A] relative">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="distances"
+      className="relative min-h-[calc(100vh-76px)] lg:h-[calc(100vh-76px)] py-12 lg:py-0 flex flex-col justify-center bg-[#FAF7F1] text-[#18233A]"
+    >
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
         {/* Editorial Section Header */}
-        <div className="max-w-3xl mb-16">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#F26522] mb-3 block">
+        <div className="max-w-3xl mb-6 lg:mb-8">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#F26522] mb-1.5 block">
             CỰ LY THI ĐẤU
           </span>
-          <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#18233A] leading-tight">
+          <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-[#18233A] leading-tight">
             Chọn bước chạy của bạn
           </h2>
-          <p className="mt-4 text-[#526077] text-base sm:text-lg leading-relaxed">
+          <p className="mt-2 text-[#526077] text-xs sm:text-sm lg:text-base leading-relaxed">
             Từ trải nghiệm 5KM năng động, thử thách tốc độ 10KM, hành trình bền bỉ 21KM đến chặng tiếp sức gia đình 3 thế hệ độc bản.
           </p>
         </div>
 
-        {/* 4 Large Editorial Tiles (No tiny chips, restrained accents) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        {/* 4 Large Editorial Tiles (Fits cleanly in 1 viewport) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
           {raceCards.map((tile) => (
             <div
               key={tile.id}
-              className={`rounded-2xl p-7 flex flex-col justify-between border transition-all duration-300 shadow-[0_2px_12px_rgba(24,35,58,0.03)] hover:shadow-lg ${
+              className={`rounded-2xl p-5 sm:p-6 flex flex-col justify-between border transition-all duration-300 shadow-[0_2px_10px_rgba(24,35,58,0.03)] hover:shadow-md ${
                 tile.isFamily
-                  ? 'bg-white border-[#F26522]/40 relative overflow-hidden'
+                  ? 'bg-white border-[#F26522]/50 relative overflow-hidden'
                   : 'bg-white border-[#EEE5D7] hover:border-[#18233A]/40'
               }`}
             >
               {/* Tile Top */}
               <div>
-                {/* Badge & Distance */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`text-[10px] font-heading font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${tile.badgeColor}`}>
+                <div className="flex items-center justify-between mb-3">
+                  <span className={`text-[10px] font-heading font-bold uppercase tracking-wider px-2 py-0.5 rounded ${tile.badgeColor}`}>
                     {tile.badge}
                   </span>
-                  <span className="text-xs font-mono font-semibold text-[#8C9BAE]">
+                  <span className="text-[11px] font-mono font-semibold text-[#8C9BAE]">
                     SALA 2027
                   </span>
                 </div>
 
-                {/* Big Distance Display */}
-                <h3 className="font-heading font-black text-4xl sm:text-5xl text-[#18233A] tracking-tighter leading-none mb-3">
+                <h3 className="font-heading font-black text-3xl sm:text-4xl text-[#18233A] tracking-tighter leading-none mb-2">
                   {tile.distance}
                 </h3>
 
-                {/* Subtitle / Meaning */}
-                <h4 className="font-heading font-bold text-lg text-[#18233A] mb-1">
+                <h4 className="font-heading font-bold text-base text-[#18233A] mb-1">
                   {tile.title}
                 </h4>
 
-                {/* Suitable Runner Level */}
-                <div className="text-xs font-semibold text-[#005EB8] mb-4">
+                <div className="text-[11px] font-semibold text-[#005EB8] mb-3">
                   {tile.level}
                 </div>
 
-                {/* Short Editorial Description */}
-                <p className="text-sm text-[#526077] leading-relaxed mb-6">
+                <p className="text-xs text-[#526077] leading-relaxed mb-4 line-clamp-3">
                   {tile.desc}
                 </p>
               </div>
 
               {/* Tile Bottom Specs & CTA */}
-              <div className="pt-6 border-t border-[#EEE5D7]">
-                <div className="flex items-center justify-between text-xs text-[#526077] mb-5">
+              <div className="pt-4 border-t border-[#EEE5D7]">
+                <div className="flex items-center justify-between text-xs text-[#526077] mb-3">
                   <div>
-                    <span className="block text-[10px] uppercase font-bold text-[#8C9BAE]">Xuất phát</span>
-                    <span className="font-mono font-bold text-[#18233A]">{tile.start}</span>
+                    <span className="block text-[9px] uppercase font-bold text-[#8C9BAE]">Xuất phát</span>
+                    <span className="font-mono font-bold text-[#18233A] text-xs">{tile.start}</span>
                   </div>
                   <div className="text-right">
-                    <span className="block text-[10px] uppercase font-bold text-[#8C9BAE]">Giới hạn</span>
-                    <span className="font-mono font-bold text-[#18233A]">{tile.cutoff}</span>
+                    <span className="block text-[9px] uppercase font-bold text-[#8C9BAE]">Giới hạn</span>
+                    <span className="font-mono font-bold text-[#18233A] text-xs">{tile.cutoff}</span>
                   </div>
                 </div>
 
-                {/* Action Button */}
                 <button
                   onClick={() => {
                     if (tile.isFamily) {
@@ -149,7 +146,7 @@ export const RaceDistances: React.FC<RaceDistancesProps> = ({
                       onSelectDistance(tile.id as DistanceType);
                     }
                   }}
-                  className={`w-full py-3.5 px-4 rounded-xl font-heading font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                  className={`w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                     tile.isFamily
                       ? 'bg-[#F26522] hover:bg-[#D95314] text-white shadow-xs'
                       : 'bg-[#18233A] hover:bg-[#253658] text-white'
@@ -165,13 +162,13 @@ export const RaceDistances: React.FC<RaceDistancesProps> = ({
         </div>
 
         {/* Supporting Note */}
-        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-white border border-[#EEE5D7] text-xs text-[#526077]">
-          <div className="flex items-center gap-2.5">
+        <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-[#EEE5D7] text-xs text-[#526077]">
+          <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-[#005EB8] shrink-0" />
-            <span>Mỗi suất đăng ký bao gồm đầy đủ Race Kit chính hãng Biti's, Chip timing điện tử và bảo hiểm thi đấu.</span>
+            <span>Mỗi suất đăng ký bao gồm trọn bộ Race Kit độc quyền Biti's, Chip timing điện tử và bảo hiểm thi đấu.</span>
           </div>
           <span className="font-mono font-bold text-[#F26522] shrink-0">
-            Hạn chót đăng ký: 20.02.2027 (hoặc khi đủ số lượng)
+            Hạn chót: 20.02.2027
           </span>
         </div>
 

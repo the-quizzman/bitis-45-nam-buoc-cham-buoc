@@ -38,8 +38,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       // Scrollspy detection
       if (currentView === 'landing') {
+        if (window.scrollY < 300) {
+          setCurrentSection('');
+          return;
+        }
+
         const sections = NAV_ITEMS.map((item) => document.getElementById(item.id));
-        const scrollPosition = window.scrollY + 140;
+        const scrollPosition = window.scrollY + 160;
 
         for (let i = sections.length - 1; i >= 0; i--) {
           const section = sections[i];
@@ -87,7 +92,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           
           {/* Left: Biti's 45 Anniversary Campaign Logo */}
           <div
-            onClick={() => handleNavClick('heritage')}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setCurrentSection('');
+            }}
             className="flex items-center gap-3.5 cursor-pointer group shrink-0"
           >
             <div className="w-10 h-10 rounded-xl bg-[#005EB8] flex items-center justify-center text-white font-heading font-black text-lg tracking-tighter shadow-xs group-hover:bg-[#F26522] transition-colors">

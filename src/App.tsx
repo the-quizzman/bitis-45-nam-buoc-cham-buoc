@@ -7,15 +7,12 @@ import React, { useState, useEffect } from 'react';
 import { DistanceType, RegistrationType, SectionTab } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { RaceDistances } from './components/RaceDistances';
 import { HistoryTimeline } from './components/HistoryTimeline';
-import { RouteMap } from './components/RouteMap';
-import { RaceSchedule } from './components/RaceSchedule';
+import { RaceDistances } from './components/RaceDistances';
+import { RouteScheduleSection } from './components/RouteScheduleSection';
 import { AthleteBenefits } from './components/AthleteBenefits';
-import { NewsSection } from './components/NewsSection';
-import { GallerySection } from './components/GallerySection';
-import { SponsorsSection } from './components/SponsorsSection';
-import { FaqSection } from './components/FaqSection';
+import { NewsGallerySection } from './components/NewsGallerySection';
+import { FaqSponsorsSection } from './components/FaqSponsorsSection';
 import { Footer } from './components/Footer';
 import { RegistrationModal } from './components/RegistrationModal';
 import { RegistrationLookup } from './components/RegistrationLookup';
@@ -66,7 +63,7 @@ export default function App() {
   const handleNavigateTab = (tabOrHash: string) => {
     const cleanId = tabOrHash.replace('#', '');
     const map: Record<string, string> = {
-      hero: 'heritage',
+      hero: 'hero',
       story: 'heritage',
       heritage: 'heritage',
       distances: 'distances',
@@ -89,7 +86,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF7F1] text-[#18233A] font-sans selection:bg-[#F26522] selection:text-white">
-      {/* Sticky Navigation (76px height, editorial aesthetic) */}
+      {/* Sticky Navigation (76px height) */}
       <Navbar
         onOpenRegister={() => handleOpenRegister()}
         onOpenLookup={handleOpenLookup}
@@ -102,47 +99,32 @@ export default function App() {
       {/* Main Content Area */}
       {currentView === 'landing' ? (
         <main>
-          {/* VIEWPORT 1: HERO (3-second comprehension: 45th anniversary, BƯỚC CHẠM BƯỚC, date, location, main CTA) */}
+          {/* VIEWPORT 0: HERO (Định vị chiến dịch Biti's 45 năm - Bước Chạm Bước) */}
           <Hero
             onRegisterClick={() => handleOpenRegister()}
             onExploreClick={() => scrollToSection('distances')}
           />
 
-          {/* VIEWPORT 2: CỰ LY THI ĐẤU (4 large editorial tiles: 5KM, 10KM, 21KM, Tiếp sức gia đình 3 thế hệ) */}
-          <div id="distances" className="scroll-mt-20">
-            <RaceDistances
-              onSelectDistance={(d) => handleOpenRegister(d, false)}
-              onSelectFamily={() => handleOpenRegister(undefined, true)}
-            />
-          </div>
+          {/* VIEWPORT 1: DI SẢN (Hành trình 45 năm · 1982 → 2000s → Today → 2027) */}
+          <HistoryTimeline />
 
-          {/* VIEWPORT 3: DI SẢN 45 NĂM (Horizontal timeline: 1982 → 2000s → Today → 2027) */}
-          <div id="heritage" className="scroll-mt-20">
-            <HistoryTimeline />
-          </div>
+          {/* VIEWPORT 2: CỰ LY (Chọn bước chạy của bạn: 5K, 10K, 21K, Tiếp sức gia đình) */}
+          <RaceDistances
+            onSelectDistance={(d) => handleOpenRegister(d, false)}
+            onSelectFamily={() => handleOpenRegister(undefined, true)}
+          />
 
-          {/* VIEWPORT 4: HÀNH TRÌNH & CUNG ĐƯỜNG SALA */}
-          <div id="route-schedule" className="scroll-mt-20">
-            <RouteMap />
-            <RaceSchedule />
-          </div>
+          {/* VIEWPORT 3: HÀNH TRÌNH (Cung đường Sala & Lịch thi đấu với toggle) */}
+          <RouteScheduleSection />
 
-          {/* VIEWPORT 5: VẬT PHẨM & QUYỀN LỢI VẬN ĐỘNG VIÊN */}
-          <div id="benefits" className="scroll-mt-20">
-            <AthleteBenefits />
-          </div>
+          {/* VIEWPORT 4: QUYỀN LỢI (Trọn bộ Race kit & Đặc quyền VĐV) */}
+          <AthleteBenefits />
 
-          {/* VIEWPORT 6: TIN TỨC & KHOẢNH KHẮC RUNNER */}
-          <div id="news-gallery" className="scroll-mt-20">
-            <NewsSection />
-            <GallerySection />
-          </div>
+          {/* VIEWPORT 5: TIN TỨC & KHOẢNH KHẮC (Bản tin sự kiện & Gallery ảnh) */}
+          <NewsGallerySection />
 
-          {/* VIEWPORT 7: CÂU HỎI THƯỜNG GẶP (FAQ) & ĐỐI TÁC ĐỒNG HÀNH */}
-          <div id="faq-sponsors" className="scroll-mt-20">
-            <FaqSection />
-            <SponsorsSection />
-          </div>
+          {/* VIEWPORT 6: FAQ & ĐỐI TÁC (Giải đáp thắc mắc & Đơn vị đồng hành) */}
+          <FaqSponsorsSection />
 
           {/* Footer */}
           <Footer
@@ -152,7 +134,7 @@ export default function App() {
             onSelectTab={setActiveTab}
           />
 
-          {/* Floating Action Button (Scroll to top & Quick register) */}
+          {/* Floating Action Button */}
           {showScrollTop && (
             <div className="fixed bottom-6 right-6 z-40 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-4 duration-300">
               <button
