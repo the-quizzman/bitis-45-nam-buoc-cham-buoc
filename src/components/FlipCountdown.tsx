@@ -16,14 +16,14 @@ export const StaticUnit: React.FC<StaticUnitProps> = ({
   isPrimary = false,
 }) => {
   const cardWidthClass = isPrimary
-    ? 'w-[95px] xs:w-[110px] sm:w-[125px] lg:w-[135px]'
-    : 'w-[48px] xs:w-[56px] sm:w-[64px] lg:w-[72px]';
+    ? 'w-[84px] xs:w-[96px] sm:w-[108px] lg:w-[118px]'
+    : 'w-[42px] xs:w-[48px] sm:w-[54px] lg:w-[60px]';
 
-  const cardHeightClass = 'h-[56px] sm:h-[62px] lg:h-[68px]';
+  const cardHeightClass = 'h-[48px] sm:h-[52px] lg:h-[58px]';
 
   const textSizeClass = isPrimary
-    ? 'text-2xl sm:text-3xl lg:text-[34px]'
-    : 'text-lg sm:text-xl lg:text-[24px]';
+    ? 'text-xl sm:text-2xl lg:text-[27px]'
+    : 'text-sm sm:text-base lg:text-[19px]';
 
   const textColorClass = isPrimary
     ? 'text-[#F26522]'
@@ -34,14 +34,14 @@ export const StaticUnit: React.FC<StaticUnitProps> = ({
     : 'bg-white border-[#EEE5D7] shadow-[0_2px_8px_rgba(24,35,58,0.03)]';
 
   const labelClass = isPrimary
-    ? 'text-[10px] sm:text-[11px] font-heading font-black tracking-widest text-[#F26522] uppercase mt-1.5'
-    : 'text-[10px] sm:text-[11px] font-sans font-semibold text-[#8C9BAE] mt-1.5';
+    ? 'text-[9px] sm:text-[10px] font-heading font-black tracking-widest text-[#F26522] uppercase mt-1'
+    : 'text-[9px] sm:text-[10px] font-sans font-semibold text-[#8C9BAE] mt-1';
 
   return (
     <div className={`flex flex-col items-center ${cardWidthClass}`}>
       {/* One continuous single-surface card */}
       <div
-        className={`w-full ${cardHeightClass} rounded-xl sm:rounded-2xl border ${cardBgClass} flex items-center justify-center select-none transition-transform hover:-translate-y-0.5 duration-200`}
+        className={`w-full ${cardHeightClass} rounded-xl border ${cardBgClass} flex items-center justify-center select-none transition-transform hover:-translate-y-0.5 duration-200`}
       >
         <span
           className={`font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -98,22 +98,22 @@ export const FlipSecondsUnit: React.FC<FlipSecondsUnitProps> = ({
     };
   }, [value, displayVal]);
 
-  const cardWidthClass = 'w-[48px] xs:w-[56px] sm:w-[64px] lg:w-[72px]';
-  const cardHeightClass = 'h-[56px] sm:h-[62px] lg:h-[68px]';
-  const textSizeClass = 'text-lg sm:text-xl lg:text-[24px]';
+  const cardWidthClass = 'w-[42px] xs:w-[48px] sm:w-[54px] lg:w-[60px]';
+  const cardHeightClass = 'h-[48px] sm:h-[52px] lg:h-[58px]';
+  const textSizeClass = 'text-sm sm:text-base lg:text-[19px]';
   const textColorClass = 'text-[#18233A]';
-  const labelClass = 'text-[10px] sm:text-[11px] font-sans font-semibold text-[#8C9BAE] mt-1.5';
+  const labelClass = 'text-[9px] sm:text-[10px] font-sans font-semibold text-[#8C9BAE] mt-1';
 
   return (
     <div className={`flex flex-col items-center ${cardWidthClass}`}>
       {/* 3D Flip Card Shell with 900px perspective */}
       <div
-        className={`relative w-full ${cardHeightClass} flip-perspective rounded-xl sm:rounded-2xl shadow-[0_2px_8px_rgba(24,35,58,0.05)]`}
+        className={`relative w-full ${cardHeightClass} flip-perspective rounded-xl shadow-[0_2px_8px_rgba(24,35,58,0.05)]`}
       >
         {/* ================= LAYER 1: STATIC TOP HALF ================= */}
         {/* Shows new resting value (upper 50% only) */}
         <div
-          className="absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-xl sm:rounded-t-2xl border-t border-x border-[#EEE5D7] bg-white select-none"
+          className="absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-xl border-t border-x border-[#EEE5D7] bg-white select-none"
         >
           <div
             className={`absolute inset-x-0 top-0 h-[200%] flex items-center justify-center font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -127,7 +127,7 @@ export const FlipSecondsUnit: React.FC<FlipSecondsUnitProps> = ({
         {/* ================= LAYER 2: STATIC BOTTOM HALF ================= */}
         {/* Shows old value while flipping, then current value when resting (lower 50% only) */}
         <div
-          className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-xl sm:rounded-b-2xl border-b border-x border-[#EEE5D7] bg-[#F7F3EB] select-none"
+          className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-xl border-b border-x border-[#EEE5D7] bg-[#F7F3EB] select-none"
         >
           <div
             className={`absolute inset-x-0 bottom-0 h-[200%] flex items-center justify-center font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -142,7 +142,7 @@ export const FlipSecondsUnit: React.FC<FlipSecondsUnitProps> = ({
         {/* Rotates from 0deg down to -90deg around center hinge, showing old value upper 50% */}
         {isFlipping && (
           <div
-            className="absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-xl sm:rounded-t-2xl border-t border-x border-[#EEE5D7] bg-white select-none z-20 animate-flip-top"
+            className="absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-xl border-t border-x border-[#EEE5D7] bg-white select-none z-20 animate-flip-top"
           >
             <div
               className={`absolute inset-x-0 top-0 h-[200%] flex items-center justify-center font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -158,7 +158,7 @@ export const FlipSecondsUnit: React.FC<FlipSecondsUnitProps> = ({
         {/* Rotates from 90deg down to 0deg around center hinge, showing new value lower 50% */}
         {isFlipping && (
           <div
-            className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-xl sm:rounded-b-2xl border-b border-x border-[#EEE5D7] bg-[#F7F3EB] select-none z-30 animate-flip-bottom"
+            className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-xl border-b border-x border-[#EEE5D7] bg-[#F7F3EB] select-none z-30 animate-flip-bottom"
           >
             <div
               className={`absolute inset-x-0 bottom-0 h-[200%] flex items-center justify-center font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -203,7 +203,7 @@ export const FlipCountdown: React.FC<FlipCountdownProps> = ({
   seconds,
 }) => {
   return (
-    <div className="inline-flex items-center gap-1.5 sm:gap-2.5 max-w-full overflow-x-auto pb-1">
+    <div className="inline-flex items-center gap-1 sm:gap-2 max-w-full overflow-x-auto pb-1">
       {/* 1. DAYS: Static continuous surface (Featured card with orange number) */}
       <StaticUnit
         value={String(days)}
@@ -212,10 +212,10 @@ export const FlipCountdown: React.FC<FlipCountdownProps> = ({
       />
 
       {/* Subtle Visual Divider between Day and Clock */}
-      <div className="h-8 w-px bg-[#EEE5D7] mx-0.5 hidden xs:block" />
+      <div className="h-6 w-px bg-[#EEE5D7] mx-0.5 hidden xs:block" />
 
       {/* 2. TIME PRECISION UNITS */}
-      <div className="flex items-center gap-1 sm:gap-2">
+      <div className="flex items-center gap-1 sm:gap-1.5">
         {/* Hours: Static continuous surface */}
         <StaticUnit
           value={String(hours).padStart(2, '0')}
@@ -224,7 +224,7 @@ export const FlipCountdown: React.FC<FlipCountdownProps> = ({
         />
 
         {/* Static Colon Separator */}
-        <span className="text-xl sm:text-2xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[56px] sm:h-[62px] lg:h-[68px] select-none pb-4">
+        <span className="text-base sm:text-lg font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[48px] sm:h-[52px] lg:h-[58px] select-none pb-3">
           :
         </span>
 
@@ -236,7 +236,7 @@ export const FlipCountdown: React.FC<FlipCountdownProps> = ({
         />
 
         {/* Static Colon Separator */}
-        <span className="text-xl sm:text-2xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[56px] sm:h-[62px] lg:h-[68px] select-none pb-4">
+        <span className="text-base sm:text-lg font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[48px] sm:h-[52px] lg:h-[58px] select-none pb-3">
           :
         </span>
 
