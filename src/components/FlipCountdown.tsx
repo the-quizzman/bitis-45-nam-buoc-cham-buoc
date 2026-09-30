@@ -1,12 +1,76 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-interface FlipUnitProps {
+interface StaticUnitProps {
   value: string;
   label: string;
   isPrimary?: boolean;
 }
 
-export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = false }) => {
+/**
+ * Static single-surface card for Days, Hours, and Minutes.
+ * Continuous warm white / ivory surface, rounded-2xl, no center divider, no hinge.
+ */
+export const StaticUnit: React.FC<StaticUnitProps> = ({
+  value,
+  label,
+  isPrimary = false,
+}) => {
+  const cardWidthClass = isPrimary
+    ? 'w-[130px] xs:w-[155px] sm:w-[185px] lg:w-[205px]'
+    : 'w-[64px] xs:w-[78px] sm:w-[94px] lg:w-[106px]';
+
+  const cardHeightClass = 'h-[74px] sm:h-[84px] lg:h-[94px]';
+
+  const textSizeClass = isPrimary
+    ? 'text-4xl xs:text-5xl sm:text-[54px] lg:text-[62px]'
+    : 'text-2xl xs:text-3xl sm:text-[38px] lg:text-[44px]';
+
+  const textColorClass = isPrimary
+    ? 'text-[#F26522]'
+    : 'text-[#18233A]';
+
+  const cardBgClass = isPrimary
+    ? 'bg-gradient-to-b from-[#FFFBF8] to-[#FFF6EF] border-[#F26522]/30 shadow-[0_3px_12px_rgba(242,101,34,0.08)]'
+    : 'bg-white border-[#EEE5D7] shadow-[0_3px_12px_rgba(24,35,58,0.04)]';
+
+  const labelClass = isPrimary
+    ? 'text-xs sm:text-[13px] font-heading font-black tracking-widest text-[#F26522] uppercase mt-2'
+    : 'text-xs sm:text-[13px] font-sans font-semibold text-[#8C9BAE] mt-2';
+
+  return (
+    <div className={`flex flex-col items-center ${cardWidthClass}`}>
+      {/* One continuous single-surface card */}
+      <div
+        className={`w-full ${cardHeightClass} rounded-2xl border ${cardBgClass} flex items-center justify-center select-none transition-transform hover:-translate-y-0.5 duration-200`}
+      >
+        <span
+          className={`font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
+        >
+          {value}
+        </span>
+      </div>
+
+      {/* Label outside the card */}
+      <span className={`${labelClass} select-none text-center`}>
+        {label}
+      </span>
+    </div>
+  );
+};
+
+interface FlipSecondsUnitProps {
+  value: string;
+  label: string;
+}
+
+/**
+ * Dedicated 3D physical split-flap card for SECONDS only.
+ * Features center horizontal seam, hinge notches, and 2-phase 3D folding animation every second.
+ */
+export const FlipSecondsUnit: React.FC<FlipSecondsUnitProps> = ({
+  value,
+  label,
+}) => {
   const [displayVal, setDisplayVal] = useState<string>(value);
   const [prevVal, setPrevVal] = useState<string>(value);
   const [isFlipping, setIsFlipping] = useState<boolean>(false);
@@ -24,7 +88,7 @@ export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = fa
 
       timeoutRef.current = setTimeout(() => {
         setIsFlipping(false);
-      }, 580);
+      }, 550);
     }
 
     return () => {
@@ -34,47 +98,22 @@ export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = fa
     };
   }, [value, displayVal]);
 
-  // Card dimensions: Days card +10-15% (235-240px desktop), Time cards 125-130px desktop
-  const cardWidthClass = isPrimary
-    ? 'w-[150px] xs:w-[185px] sm:w-[215px] lg:w-[240px]'
-    : 'w-[74px] xs:w-[92px] sm:w-[110px] lg:w-[128px]';
-
-  const cardHeightClass = 'h-[78px] sm:h-[90px] lg:h-[100px]';
-
-  const textSizeClass = isPrimary
-    ? 'text-4xl xs:text-5xl sm:text-[62px] lg:text-[72px]'
-    : 'text-2xl xs:text-3xl sm:text-[44px] lg:text-[50px]';
-
-  const textColorClass = isPrimary
-    ? 'text-[#F26522]'
-    : 'text-[#18233A]';
-
-  const cardBorderClass = isPrimary
-    ? 'border-[#F26522]/30'
-    : 'border-[#EEE5D7]';
-
-  const topBgClass = isPrimary
-    ? 'bg-[#FFFBF8]'
-    : 'bg-white';
-
-  const bottomBgClass = isPrimary
-    ? 'bg-[#FFF3EB]'
-    : 'bg-[#F6F2E9]';
-
-  const labelClass = isPrimary
-    ? 'text-xs sm:text-[13px] font-heading font-black tracking-widest text-[#F26522] uppercase mt-2'
-    : 'text-xs sm:text-[13px] font-sans font-semibold text-[#8C9BAE] mt-2';
+  const cardWidthClass = 'w-[64px] xs:w-[78px] sm:w-[94px] lg:w-[106px]';
+  const cardHeightClass = 'h-[74px] sm:h-[84px] lg:h-[94px]';
+  const textSizeClass = 'text-2xl xs:text-3xl sm:text-[38px] lg:text-[44px]';
+  const textColorClass = 'text-[#18233A]';
+  const labelClass = 'text-xs sm:text-[13px] font-sans font-semibold text-[#8C9BAE] mt-2';
 
   return (
     <div className={`flex flex-col items-center ${cardWidthClass}`}>
-      {/* 3D Flip Card Shell with 1000px perspective */}
+      {/* 3D Flip Card Shell with 900px perspective */}
       <div
-        className={`relative w-full ${cardHeightClass} flip-perspective rounded-xl sm:rounded-2xl shadow-[0_3px_12px_rgba(24,35,58,0.05)]`}
+        className={`relative w-full ${cardHeightClass} flip-perspective rounded-2xl shadow-[0_3px_12px_rgba(24,35,58,0.06)]`}
       >
         {/* ================= LAYER 1: STATIC TOP HALF ================= */}
         {/* Shows new resting value (upper 50% only) */}
         <div
-          className={`absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-xl sm:rounded-t-2xl border-t border-x ${cardBorderClass} ${topBgClass} select-none`}
+          className="absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-2xl border-t border-x border-[#EEE5D7] bg-white select-none"
         >
           <div
             className={`absolute inset-x-0 top-0 h-[200%] flex items-center justify-center font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -88,7 +127,7 @@ export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = fa
         {/* ================= LAYER 2: STATIC BOTTOM HALF ================= */}
         {/* Shows old value while flipping, then current value when resting (lower 50% only) */}
         <div
-          className={`absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-xl sm:rounded-b-2xl border-b border-x ${cardBorderClass} ${bottomBgClass} select-none`}
+          className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-2xl border-b border-x border-[#EEE5D7] bg-[#F7F3EB] select-none"
         >
           <div
             className={`absolute inset-x-0 bottom-0 h-[200%] flex items-center justify-center font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -103,7 +142,7 @@ export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = fa
         {/* Rotates from 0deg down to -90deg around center hinge, showing old value upper 50% */}
         {isFlipping && (
           <div
-            className={`absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-xl sm:rounded-t-2xl border-t border-x ${cardBorderClass} ${topBgClass} select-none z-20 animate-flip-top`}
+            className="absolute inset-x-0 top-0 h-1/2 overflow-hidden rounded-t-2xl border-t border-x border-[#EEE5D7] bg-white select-none z-20 animate-flip-top"
           >
             <div
               className={`absolute inset-x-0 top-0 h-[200%] flex items-center justify-center font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -119,7 +158,7 @@ export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = fa
         {/* Rotates from 90deg down to 0deg around center hinge, showing new value lower 50% */}
         {isFlipping && (
           <div
-            className={`absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-xl sm:rounded-b-2xl border-b border-x ${cardBorderClass} ${bottomBgClass} select-none z-30 animate-flip-bottom`}
+            className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden rounded-b-2xl border-b border-x border-[#EEE5D7] bg-[#F7F3EB] select-none z-30 animate-flip-bottom"
           >
             <div
               className={`absolute inset-x-0 bottom-0 h-[200%] flex items-center justify-center font-mono font-black tabular-nums tracking-tighter ${textSizeClass} ${textColorClass}`}
@@ -132,7 +171,7 @@ export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = fa
         )}
 
         {/* ================= PHYSICAL HINGE LINE & NOTCHES ================= */}
-        {/* Horizontal center split line with inner depth shadow */}
+        {/* Horizontal center split line with subtle shadow */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[1px] bg-[#18233A]/25 z-40 pointer-events-none shadow-[0_1px_1px_rgba(0,0,0,0.06)]" />
         
         {/* Left hinge notch */}
@@ -165,47 +204,46 @@ export const FlipCountdown: React.FC<FlipCountdownProps> = ({
 }) => {
   return (
     <div className="inline-flex items-center gap-2 sm:gap-3 lg:gap-3.5 max-w-full overflow-x-auto pb-1">
-      {/* 1. FEATURED HERO TILE: DAYS (200-220px on desktop) */}
-      <FlipUnit
+      {/* 1. DAYS: Static continuous surface (Featured larger card with orange number) */}
+      <StaticUnit
         value={String(days)}
         label="NGÀY NỮA"
         isPrimary={true}
       />
 
-      {/* Subtle Visual Gap/Divider between Day and Clock */}
+      {/* Subtle Visual Divider between Day and Clock */}
       <div className="h-10 w-px bg-[#EEE5D7] mx-0.5 hidden xs:block" />
 
-      {/* 2. TIME PRECISION UNITS: HOURS : MINUTES : SECONDS (110-125px on desktop) */}
+      {/* 2. TIME PRECISION UNITS */}
       <div className="flex items-center gap-1.5 sm:gap-2.5">
-        {/* Hours */}
-        <FlipUnit
+        {/* Hours: Static continuous surface */}
+        <StaticUnit
           value={String(hours).padStart(2, '0')}
           label="giờ"
           isPrimary={false}
         />
 
-        {/* Static Colon Separator (Never flips) */}
-        <span className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[78px] sm:h-[90px] lg:h-[100px] select-none pb-6">
+        {/* Static Colon Separator */}
+        <span className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[74px] sm:h-[84px] lg:h-[94px] select-none pb-6">
           :
         </span>
 
-        {/* Minutes */}
-        <FlipUnit
+        {/* Minutes: Static continuous surface */}
+        <StaticUnit
           value={String(minutes).padStart(2, '0')}
           label="phút"
           isPrimary={false}
         />
 
-        {/* Static Colon Separator (Never flips) */}
-        <span className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[78px] sm:h-[90px] lg:h-[100px] select-none pb-6">
+        {/* Static Colon Separator */}
+        <span className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[74px] sm:h-[84px] lg:h-[94px] select-none pb-6">
           :
         </span>
 
-        {/* Seconds */}
-        <FlipUnit
+        {/* Seconds: The ONLY card using true 3D physical split-flap flip animation */}
+        <FlipSecondsUnit
           value={String(seconds).padStart(2, '0')}
           label="giây"
-          isPrimary={false}
         />
       </div>
     </div>
