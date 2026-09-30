@@ -62,35 +62,35 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
           {/* LEFT COLUMN: ~58% (7 cols on 12-col grid) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             
-            {/* Small Anniversary Eyebrow */}
-            <div className="flex items-center gap-2 mb-1.5 lg:mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#F26522]" />
-              <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#005EB8]">
+            {/* Small Anniversary Eyebrow (+10-12%) */}
+            <div className="flex items-center gap-2.5 mb-1.5 lg:mb-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#F26522]" />
+              <span className="text-[13px] sm:text-[13.5px] font-heading font-bold uppercase tracking-widest text-[#005EB8]">
                 KỶ NIỆM 45 NĂM BITI’S · 1982–2027
               </span>
             </div>
 
-            {/* Large Campaign Headline: BƯỚC CHẠM BƯỚC */}
-            <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-[48px] xl:text-[60px] uppercase tracking-tighter leading-[0.92] text-[#18233A]">
+            {/* Large Campaign Headline: BƯỚC CHẠM BƯỚC (+12-18%) */}
+            <h1 className="font-heading font-black text-[46px] sm:text-[58px] lg:text-[56px] xl:text-[70px] uppercase tracking-tighter leading-[0.92] text-[#18233A]">
               <span className="block">BƯỚC</span>
               <span className="block mt-0.5">
-                <span className="text-[#F26522] italic font-serif font-bold lowercase tracking-normal text-[0.88em] mr-2">
+                <span className="text-[#F26522] italic font-serif font-bold lowercase tracking-normal text-[0.9em] mr-2 sm:mr-3">
                   chạm
                 </span>
                 <span>BƯỚC</span>
               </span>
             </h1>
 
-            {/* Core Message / Tagline */}
-            <div className="mt-1.5 lg:mt-2 flex items-center gap-2.5">
-              <div className="h-0.5 w-6 bg-[#F26522]" />
-              <p className="font-heading font-bold text-base sm:text-lg lg:text-xl text-[#18233A] tracking-tight">
+            {/* Core Message / Tagline (+12-15%) */}
+            <div className="mt-2 lg:mt-2.5 flex items-center gap-3">
+              <div className="h-[2.5px] w-7 bg-[#F26522] rounded-full shrink-0" />
+              <p className="font-heading font-bold text-lg sm:text-xl lg:text-[23px] text-[#18233A] tracking-tight">
                 Ghi dấu hiện tại, tiếp bước tương lai
               </p>
             </div>
 
-            {/* Short Emotional Narrative (max 2 lines) */}
-            <p className="mt-1 text-[#526077] text-xs sm:text-sm leading-relaxed max-w-xl font-normal line-clamp-2">
+            {/* Short Emotional Narrative (+10-12%, higher line-height) */}
+            <p className="mt-1.5 text-[#526077] text-sm sm:text-[15.5px] leading-[1.65] max-w-xl font-normal line-clamp-2">
               45 năm từ những bước chân đầu tiên đến triệu bước chân tiếp nối.
               Một hành trình kết nối gia đình, cộng đồng và những thế hệ Việt Nam.
             </p>
@@ -99,46 +99,46 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             <div className="mt-2.5 pt-2.5 border-t border-[#EEE5D7] grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2.5">
               {/* Date */}
               <div>
-                <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Thời gian
                 </span>
-                <span className="block font-heading font-black text-xs sm:text-sm lg:text-base text-[#18233A]">
+                <span className="block font-heading font-black text-sm sm:text-base lg:text-[18px] text-[#18233A] tracking-tight leading-snug">
                   07.03.2027
                 </span>
-                <span className="block text-[10px] text-[#526077]">Chủ nhật · 04:30 AM</span>
+                <span className="block text-[11px] text-[#526077]">Chủ nhật · 04:30 AM</span>
               </div>
 
               {/* Location */}
               <div>
-                <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Địa điểm
                 </span>
-                <span className="block font-heading font-black text-xs sm:text-sm lg:text-base text-[#18233A]">
+                <span className="block font-heading font-black text-sm sm:text-base lg:text-[18px] text-[#18233A] tracking-tight leading-snug">
                   KĐT Sala
                 </span>
-                <span className="block text-[10px] text-[#526077]">TP. Thủ Đức, TP.HCM</span>
+                <span className="block text-[11px] text-[#526077]">TP. Thủ Đức, TP.HCM</span>
               </div>
 
               {/* Distances */}
               <div>
-                <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Cự ly thi đấu
                 </span>
-                <span className="block font-heading font-black text-xs sm:text-sm lg:text-base text-[#18233A]">
+                <span className="block font-heading font-black text-sm sm:text-base lg:text-[18px] text-[#18233A] tracking-tight leading-snug">
                   5K · 10K · 21K
                 </span>
-                <span className="block text-[10px] text-[#526077]">Cung đường chuẩn Sala</span>
+                <span className="block text-[11px] text-[#526077]">Cung đường chuẩn Sala</span>
               </div>
 
               {/* Special Category */}
               <div>
-                <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#F26522]">
+                <span className="block text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#F26522]">
                   Đặc quyền
                 </span>
-                <span className="block font-heading font-black text-xs sm:text-sm lg:text-base text-[#18233A]">
+                <span className="block font-heading font-black text-sm sm:text-base lg:text-[18px] text-[#18233A] tracking-tight leading-snug">
                   Tiếp sức gia đình
                 </span>
-                <span className="block text-[10px] text-[#526077]">Đội hình 3 thế hệ</span>
+                <span className="block text-[11px] text-[#526077]">Đội hình 3 thế hệ</span>
               </div>
             </div>
 
@@ -146,18 +146,18 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             <div className="mt-3 lg:mt-3.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <button
                 onClick={onRegisterClick}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-xs hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-[13.5px] uppercase tracking-wider shadow-xs hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
               >
                 <span>Đăng ký tham gia</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
                 onClick={onExploreClick}
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-transparent hover:bg-black/5 text-[#18233A] border border-[#18233A]/20 hover:border-[#18233A] font-heading font-bold text-xs tracking-wide uppercase transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-transparent hover:bg-black/5 text-[#18233A] border border-[#18233A]/20 hover:border-[#18233A] font-heading font-bold text-[13.5px] tracking-wide uppercase transition-all cursor-pointer"
               >
                 <span>Xem cự ly & lộ trình</span>
-                <ChevronRight className="w-3.5 h-3.5 text-[#8C9BAE]" />
+                <ChevronRight className="w-4 h-4 text-[#8C9BAE]" />
               </button>
             </div>
 
@@ -214,30 +214,30 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
                     {/* Race Bib Header */}
                     <div className="flex items-center justify-between pb-1.5 border-b border-[#EEE5D7]">
                       <div className="flex items-center gap-1.5">
-                        <span className="font-heading font-black text-xs text-[#005EB8] tracking-tight">
+                        <span className="font-heading font-black text-[13px] text-[#005EB8] tracking-tight">
                           BITI’S 45
                         </span>
-                        <span className="text-[8px] font-bold uppercase tracking-wider text-[#8C9BAE]">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-[#8C9BAE]">
                           OFFICIAL RACE
                         </span>
                       </div>
-                      <span className="px-1.5 py-0.5 rounded bg-[#F26522] text-white text-[8px] font-bold uppercase tracking-wider">
+                      <span className="px-1.5 py-0.5 rounded bg-[#F26522] text-white text-[9px] font-bold uppercase tracking-wider">
                         CHIP TIMED
                       </span>
                     </div>
 
                     {/* Big Bold BIB Number */}
                     <div className="flex items-baseline justify-between py-1">
-                      <span className="font-mono font-black text-2xl sm:text-3xl text-[#18233A] tracking-tighter">
+                      <span className="font-mono font-black text-2xl sm:text-[32px] text-[#18233A] tracking-tighter">
                         #1982-2027
                       </span>
-                      <span className="text-[10px] font-heading font-bold text-[#526077] uppercase tracking-wide">
+                      <span className="text-[11px] font-heading font-bold text-[#526077] uppercase tracking-wide">
                         SALA RUN
                       </span>
                     </div>
 
                     {/* Bib Footer Data */}
-                    <div className="pt-1.5 border-t border-[#EEE5D7] flex items-center justify-between text-[10px] text-[#526077]">
+                    <div className="pt-1.5 border-t border-[#EEE5D7] flex items-center justify-between text-[11px] text-[#526077]">
                       <span>Cự ly: <strong>5K · 10K · 21K</strong></span>
                       <span className="text-[#005EB8] font-bold">Nâng niu bước chạy Việt</span>
                     </div>

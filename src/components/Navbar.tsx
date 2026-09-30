@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative py-2 text-sm font-heading font-semibold transition-colors cursor-pointer ${
+                  className={`relative py-2 text-[15px] font-heading font-semibold transition-colors cursor-pointer ${
                     isActive
                       ? 'text-[#F26522]'
                       : 'text-[#18233A]/75 hover:text-[#18233A]'
@@ -138,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="hidden sm:flex items-center gap-4">
             <button
               onClick={onOpenLookup}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-heading font-bold text-[#18233A]/80 hover:text-[#005EB8] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-heading font-bold text-[#18233A]/80 hover:text-[#005EB8] transition-colors cursor-pointer"
             >
               <Search className="w-3.5 h-3.5" />
               <span>Tra cứu BIB</span>
@@ -146,7 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <button
               onClick={onOpenRegister}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs active:scale-[0.98] cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-[13px] uppercase tracking-wider transition-all shadow-xs active:scale-[0.98] cursor-pointer"
             >
               <span>Đăng ký</span>
               <ArrowRight className="w-3.5 h-3.5" />

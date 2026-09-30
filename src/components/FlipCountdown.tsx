@@ -34,16 +34,16 @@ export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = fa
     };
   }, [value, displayVal]);
 
-  // Card dimensions: Days card is prominently wider (200-220px desktop), Time cards 110-125px desktop
+  // Card dimensions: Days card +10-15% (235-240px desktop), Time cards 125-130px desktop
   const cardWidthClass = isPrimary
-    ? 'w-[140px] xs:w-[170px] sm:w-[195px] lg:w-[215px]'
-    : 'w-[68px] xs:w-[84px] sm:w-[100px] lg:w-[114px]';
+    ? 'w-[150px] xs:w-[185px] sm:w-[215px] lg:w-[240px]'
+    : 'w-[74px] xs:w-[92px] sm:w-[110px] lg:w-[128px]';
 
-  const cardHeightClass = 'h-[72px] sm:h-[82px] lg:h-[90px]';
+  const cardHeightClass = 'h-[78px] sm:h-[90px] lg:h-[100px]';
 
   const textSizeClass = isPrimary
-    ? 'text-4xl xs:text-5xl sm:text-[54px] lg:text-[62px]'
-    : 'text-2xl xs:text-3xl sm:text-4xl lg:text-[42px]';
+    ? 'text-4xl xs:text-5xl sm:text-[62px] lg:text-[72px]'
+    : 'text-2xl xs:text-3xl sm:text-[44px] lg:text-[50px]';
 
   const textColorClass = isPrimary
     ? 'text-[#F26522]'
@@ -62,8 +62,8 @@ export const FlipUnit: React.FC<FlipUnitProps> = ({ value, label, isPrimary = fa
     : 'bg-[#F6F2E9]';
 
   const labelClass = isPrimary
-    ? 'text-[11px] sm:text-xs font-heading font-black tracking-widest text-[#F26522] uppercase mt-2'
-    : 'text-[11px] sm:text-xs font-sans font-semibold text-[#8C9BAE] mt-2';
+    ? 'text-xs sm:text-[13px] font-heading font-black tracking-widest text-[#F26522] uppercase mt-2'
+    : 'text-xs sm:text-[13px] font-sans font-semibold text-[#8C9BAE] mt-2';
 
   return (
     <div className={`flex flex-col items-center ${cardWidthClass}`}>
@@ -185,7 +185,7 @@ export const FlipCountdown: React.FC<FlipCountdownProps> = ({
         />
 
         {/* Static Colon Separator (Never flips) */}
-        <span className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[72px] sm:h-[82px] lg:h-[90px] select-none pb-6">
+        <span className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[78px] sm:h-[90px] lg:h-[100px] select-none pb-6">
           :
         </span>
 
@@ -197,7 +197,7 @@ export const FlipCountdown: React.FC<FlipCountdownProps> = ({
         />
 
         {/* Static Colon Separator (Never flips) */}
-        <span className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[72px] sm:h-[82px] lg:h-[90px] select-none pb-6">
+        <span className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-[#B2BAC5] flex items-center justify-center h-[78px] sm:h-[90px] lg:h-[100px] select-none pb-6">
           :
         </span>
 
