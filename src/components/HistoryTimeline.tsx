@@ -55,40 +55,40 @@ export const HistoryTimeline: React.FC = () => {
   return (
     <section
       id="heritage"
-      className="relative min-h-[calc(100vh-76px)] lg:h-[calc(100vh-76px)] py-12 lg:py-0 flex flex-col justify-center bg-[#F3F7FA] text-[#18233A] overflow-hidden"
+      className="relative min-h-[calc(100vh-76px)] lg:h-[calc(100vh-76px)] lg:max-h-[calc(100vh-76px)] py-8 lg:py-0 flex flex-col justify-center bg-[#F3F7FA] text-[#18233A] overflow-hidden"
     >
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-5 lg:mb-7">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#005EB8] mb-1.5 block">
+        <div className="max-w-3xl mb-3 lg:mb-4">
+          <span className="text-[11px] font-heading font-bold uppercase tracking-widest text-[#005EB8] mb-1 block">
             HÀNH TRÌNH DI SẢN · 1982–2027
           </span>
-          <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-[#18233A] leading-tight">
+          <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl uppercase tracking-tight text-[#18233A] leading-tight">
             45 năm · Một hành trình qua nhiều thế hệ
           </h2>
-          <p className="mt-1.5 text-[#526077] text-xs sm:text-sm lg:text-base leading-relaxed">
+          <p className="mt-1 text-[#526077] text-xs sm:text-sm leading-relaxed line-clamp-1">
             Từ những bước chân thủ công kiên trì đầu tiên đến triệu bước chân tiếp nối hôm nay.
           </p>
         </div>
 
         {/* Horizontal Milestone Bar: 1982 → 2000s → Today → 2027 */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-3 lg:mb-4">
           {milestones.map((item, index) => {
             const isCurrent = activeIdx === index;
             return (
               <button
                 key={item.year}
                 onClick={() => setActiveIdx(index)}
-                className={`p-3.5 sm:p-4 rounded-xl text-left transition-all duration-200 border cursor-pointer ${
+                className={`p-2.5 sm:p-3 rounded-xl text-left transition-all duration-200 border cursor-pointer ${
                   isCurrent
                     ? 'bg-[#18233A] text-white border-[#18233A] shadow-md'
                     : 'bg-white text-[#18233A] border-[#E8EDF2] hover:border-[#F26522]/50 hover:bg-[#FAF7F1]'
                 }`}
               >
-                <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center justify-between mb-0.5">
                   <span
-                    className={`font-heading font-black text-xl sm:text-2xl tracking-tight ${
+                    className={`font-heading font-black text-lg sm:text-xl tracking-tight ${
                       isCurrent ? 'text-[#F26522]' : 'text-[#005EB8]'
                     }`}
                   >
@@ -102,7 +102,7 @@ export const HistoryTimeline: React.FC = () => {
                     0{index + 1}
                   </span>
                 </div>
-                <div className={`text-[11px] font-heading font-bold uppercase tracking-wider line-clamp-1 ${isCurrent ? 'text-white/80' : 'text-[#526077]'}`}>
+                <div className={`text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider line-clamp-1 ${isCurrent ? 'text-white/80' : 'text-[#526077]'}`}>
                   {item.tagline}
                 </div>
               </button>
@@ -114,52 +114,52 @@ export const HistoryTimeline: React.FC = () => {
         {(() => {
           const current = milestones[activeIdx];
           return (
-            <div className="rounded-2xl bg-white border border-[#E8EDF2] overflow-hidden shadow-[0_4px_20px_rgba(24,35,58,0.04)] grid grid-cols-1 lg:grid-cols-12 max-h-[460px] lg:max-h-[480px]">
+            <div className="rounded-2xl bg-white border border-[#E8EDF2] overflow-hidden shadow-[0_4px_20px_rgba(24,35,58,0.04)] grid grid-cols-1 lg:grid-cols-12 max-h-[340px] lg:max-h-[360px]">
               
               {/* Story Narrative: 7 cols */}
-              <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between overflow-y-auto">
+              <div className="lg:col-span-7 p-4 sm:p-6 lg:p-6 flex flex-col justify-between overflow-y-auto">
                 <div>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#F26522]" />
-                    <span className="text-[11px] font-heading font-bold uppercase tracking-widest text-[#F26522]">
+                    <span className="text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-widest text-[#F26522]">
                       {current.tagline} · NĂM {current.year}
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-black text-2xl sm:text-3xl text-[#18233A] tracking-tight mb-2.5">
+                  <h3 className="font-heading font-black text-xl sm:text-2xl text-[#18233A] tracking-tight mb-1.5">
                     {current.title}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-[#18233A] font-medium leading-relaxed mb-2.5">
+                  <p className="text-xs sm:text-sm text-[#18233A] font-medium leading-relaxed mb-1.5">
                     {current.desc}
                   </p>
 
-                  <p className="text-xs sm:text-sm text-[#526077] leading-relaxed mb-6">
+                  <p className="text-[11px] sm:text-xs text-[#526077] leading-relaxed mb-3 line-clamp-2">
                     {current.detail}
                   </p>
                 </div>
 
                 {/* Editorial Quote Box */}
-                <div className="pt-4 border-t border-[#EEE5D7] bg-[#FAF7F1] -mx-6 -mb-6 sm:-mx-8 sm:-mb-8 lg:-mx-10 lg:-mb-10 p-5 sm:p-6">
+                <div className="pt-3 border-t border-[#EEE5D7] bg-[#FAF7F1] -mx-4 -mb-4 sm:-mx-6 sm:-mb-6 lg:-mx-6 lg:-mb-6 p-3 sm:p-4">
                   <p className="font-serif italic text-xs sm:text-sm text-[#18233A]">
                     {current.quote}
                   </p>
-                  <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#005EB8] mt-1.5">
+                  <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#005EB8] mt-1">
                     Tư liệu Biti's 45 năm · Di sản Việt Nam
                   </span>
                 </div>
               </div>
 
               {/* Archival / Lifestyle Image: 5 cols */}
-              <div className="lg:col-span-5 relative min-h-[200px] lg:min-h-full bg-[#18233A]">
+              <div className="lg:col-span-5 relative min-h-[160px] lg:min-h-full bg-[#18233A]">
                 <img
                   src={current.image}
                   alt={current.title}
                   className="w-full h-full object-cover object-center filter saturate-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-4 left-4 right-4 text-white text-[11px] z-10">
-                  <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/20 inline-block font-mono">
+                <div className="absolute bottom-3 left-3 right-3 text-white text-[10px] z-10">
+                  <span className="bg-black/60 backdrop-blur-md px-2 py-0.5 rounded border border-white/20 inline-block font-mono">
                     Tư liệu ảnh · {current.year}
                   </span>
                 </div>
