@@ -1,5 +1,5 @@
-import React from 'react';
-import { Calendar, MapPin, Sparkles, ArrowRight, Users, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, ChevronRight, Calendar, MapPin, Sparkles, Clock, Compass } from 'lucide-react';
 
 interface HeroProps {
   onRegisterClick: () => void;
@@ -7,235 +7,244 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) => {
+  // Target: March 7, 2027 04:30:00 (Asia/Ho_Chi_Minh)
+  const targetTime = new Date('2027-03-07T04:30:00+07:00').getTime();
+
+  const [timeLeft, setTimeLeft] = useState<{
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  }>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const calculateTime = () => {
+      const now = new Date().getTime();
+      const difference = targetTime - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        });
+      }
+    };
+
+    calculateTime();
+    const interval = setInterval(calculateTime, 1000);
+    return () => clearInterval(interval);
+  }, [targetTime]);
+
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] pt-28 pb-16 flex items-center overflow-hidden bg-gradient-to-b from-[#E0F2FE]/80 via-[#FFFBEB]/40 to-[#F8FAFC] text-slate-900"
+      className="relative min-h-[720px] lg:min-h-[820px] pt-32 pb-20 flex items-center bg-[#FAF7F1] text-[#18233A] overflow-hidden"
     >
-      {/* Dynamic Sunlit Sky & Energy Ribbon Ambient Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Morning Sun Glow Flare */}
-        <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-amber-300/35 rounded-full blur-[140px]" />
-        <div className="absolute top-1/4 -right-28 w-[550px] h-[550px] bg-orange-400/20 rounded-full blur-[160px]" />
-        <div className="absolute bottom-0 left-1/3 w-[700px] h-72 bg-emerald-400/15 rounded-full blur-[140px]" />
-
-        {/* Dynamic Curved Vector Energy Ribbons */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-45"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 900"
-          fill="none"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M -100 700 C 300 850 700 600 1200 800 C 1350 850 1550 750 1600 700"
-            stroke="#22C55E"
-            strokeWidth="28"
-            strokeLinecap="round"
-            strokeOpacity="0.35"
-          />
-          <path
-            d="M -100 620 C 320 720 680 520 1150 700 C 1320 760 1520 660 1600 620"
-            stroke="#FBBF24"
-            strokeWidth="40"
-            strokeLinecap="round"
-            strokeOpacity="0.45"
-          />
-          <path
-            d="M -80 540 C 350 630 650 440 1100 620 C 1300 700 1500 580 1600 540"
-            stroke="#FF6B00"
-            strokeWidth="36"
-            strokeLinecap="round"
-            strokeOpacity="0.4"
-          />
-        </svg>
-
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F8FAFC] to-transparent" />
+      {/* Subtle Editorial Grid Lines Background */}
+      <div className="absolute inset-0 pointer-events-none opacity-40">
+        <div className="max-w-[1400px] mx-auto h-full px-4 sm:px-6 lg:px-8 grid grid-cols-12 gap-8">
+          <div className="col-span-7 border-r border-[#EEE5D7]/80 h-full hidden lg:block" />
+          <div className="col-span-5 h-full hidden lg:block" />
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Core Hero Typography & CTA */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
+          {/* LEFT COLUMN: ~58% (7 cols on 12-col grid) */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
             
-            {/* Single Elegant Brand Badge */}
-            <div className="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full bg-white/95 border border-orange-200/80 text-[#005BAC] text-xs font-bold tracking-wide shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-              <span>KỶ NIỆM 45 NĂM BITI'S (1982 – 2027)</span>
+            {/* Small Anniversary Eyebrow */}
+            <div className="flex items-center gap-2 mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#F26522]" />
+              <span className="text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-[#005EB8]">
+                KỶ NIỆM 45 NĂM BITI’S · 1982–2027
+              </span>
             </div>
 
-            {/* Giant Title: BƯỚC chạm BƯỚC */}
-            <div>
-              <div className="text-xs sm:text-sm font-bold tracking-widest uppercase text-slate-500 mb-1">
-                GIẢI CHẠY THỂ THAO VÀ DI SẢN GIA ĐÌNH
-              </div>
-
-              <h1 className="text-balance font-heading font-black text-5xl sm:text-7xl xl:text-8xl uppercase tracking-tighter leading-[0.92] text-slate-900">
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-amber-600 to-orange-500">
-                  BƯỚC
-                </span>{' '}
-                <span
-                  style={{ fontFamily: 'Montserrat' }}
-                  className="text-amber-500 italic text-4xl sm:text-6xl xl:text-7xl mx-1 font-bold inline-block transform -rotate-3"
-                >
+            {/* Large Campaign Headline: BƯỚC CHẠM BƯỚC */}
+            <h1 className="font-heading font-black text-6xl sm:text-7xl md:text-8xl xl:text-[104px] uppercase tracking-tighter leading-[0.88] text-[#18233A]">
+              <span className="block">BƯỚC</span>
+              <span className="block mt-1">
+                <span className="text-[#F26522] italic font-serif font-bold lowercase tracking-normal text-[0.85em] mr-2">
                   chạm
-                </span>{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-600 via-amber-600 to-orange-500">
-                  BƯỚC
                 </span>
-              </h1>
+                <span>BƯỚC</span>
+              </span>
+            </h1>
 
-              {/* Tagline */}
-              <div className="flex items-center gap-3 mt-3">
-                <div className="flex h-2.5 w-24 rounded-full overflow-hidden shrink-0">
-                  <span className="w-1/4 bg-[#FFE600]" />
-                  <span className="w-1/4 bg-[#FF6B00]" />
-                  <span className="w-1/4 bg-[#EF4444]" />
-                  <span className="w-1/4 bg-[#22C55E]" />
-                </div>
-                <p className="font-heading text-base sm:text-xl font-bold uppercase text-slate-800 tracking-wide">
-                  Ghi dấu hiện tại, tiếp bước tương lai
-                </p>
-              </div>
+            {/* Core Message / Tagline */}
+            <div className="mt-6 flex items-center gap-3">
+              <div className="h-0.5 w-8 bg-[#F26522]" />
+              <p className="font-heading font-bold text-lg sm:text-2xl text-[#18233A] tracking-tight">
+                Ghi dấu hiện tại, tiếp bước tương lai
+              </p>
             </div>
 
-            {/* Story Hook */}
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
-              45 năm – từ những bước chân kiên trì đầu tiên năm 1982 đến triệu bước chân tiếp nối của thế hệ hôm nay. Cùng gia đình, bạn bè sải bước để kết nối yêu thương, chạm vào tự hào và hướng đến tương lai bền vững.
+            {/* Short Emotional Narrative (max 2-3 lines) */}
+            <p className="mt-4 text-[#526077] text-base sm:text-lg leading-relaxed max-w-xl font-normal">
+              45 năm từ những bước chân đầu tiên đến triệu bước chân tiếp nối.
+              Một hành trình kết nối gia đình, cộng đồng và những thế hệ Việt Nam.
             </p>
 
-            {/* Event Key Info Bar: Date & Location */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs">
-                <div className="p-2.5 rounded-xl bg-orange-50 text-orange-600 shrink-0">
-                  <Calendar className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase">Thời gian diễn ra</div>
-                  <div className="text-base font-heading font-black text-slate-900">Chủ nhật, 07.03.2027</div>
-                </div>
+            {/* ONE Compact Event Information Strip (NOT two separate white cards) */}
+            <div className="mt-8 pt-6 border-t border-[#EEE5D7] grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+              {/* Date */}
+              <div>
+                <span className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                  Thời gian
+                </span>
+                <span className="block font-heading font-black text-base sm:text-lg text-[#18233A] mt-0.5">
+                  07.03.2027
+                </span>
+                <span className="block text-xs text-[#526077]">Chủ nhật · 04:30 AM</span>
               </div>
 
-              <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs">
-                <div className="p-2.5 rounded-xl bg-sky-50 text-[#005BAC] shrink-0">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase">Địa điểm thi đấu</div>
-                  <div className="text-base font-heading font-black text-slate-900">KĐT Sala, TP. Thủ Đức, TP.HCM</div>
-                </div>
+              {/* Location */}
+              <div>
+                <span className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                  Địa điểm
+                </span>
+                <span className="block font-heading font-black text-base sm:text-lg text-[#18233A] mt-0.5">
+                  KĐT Sala
+                </span>
+                <span className="block text-xs text-[#526077]">TP. Thủ Đức, TP.HCM</span>
+              </div>
+
+              {/* Distances */}
+              <div>
+                <span className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                  Cự ly thi đấu
+                </span>
+                <span className="block font-heading font-black text-base sm:text-lg text-[#18233A] mt-0.5">
+                  5K · 10K · 21K
+                </span>
+                <span className="block text-xs text-[#526077]">Chuẩn cung đường Sala</span>
+              </div>
+
+              {/* Special Category */}
+              <div>
+                <span className="block text-[11px] font-heading font-bold uppercase tracking-wider text-[#F26522]">
+                  Đặc quyền
+                </span>
+                <span className="block font-heading font-black text-base sm:text-lg text-[#18233A] mt-0.5">
+                  Tiếp sức gia đình
+                </span>
+                <span className="block text-xs text-[#526077]">Đội hình 3 thế hệ</span>
               </div>
             </div>
 
             {/* Action CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <button
                 onClick={onRegisterClick}
-                className="group relative inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-heading font-extrabold text-sm tracking-wider uppercase rounded-xl shadow-lg shadow-orange-500/25 active:scale-95 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-sm uppercase tracking-wider shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
               >
-                <span>ĐĂNG KÝ THAM GIA</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>Đăng ký tham gia</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
                 onClick={onExploreClick}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white hover:bg-slate-50 text-slate-700 hover:text-orange-600 font-heading font-bold text-sm tracking-wide uppercase rounded-xl border border-slate-200 transition-all cursor-pointer shadow-xs"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-transparent hover:bg-black/5 text-[#18233A] border border-[#18233A]/20 hover:border-[#18233A] font-heading font-bold text-sm tracking-wide uppercase transition-all cursor-pointer"
               >
-                <span>Xem cự ly & sơ đồ</span>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
+                <span>Xem cự ly & lộ trình</span>
+                <ChevronRight className="w-4 h-4 text-[#8C9BAE]" />
               </button>
             </div>
 
-            {/* Streamlined Distances Bar */}
-            <div className="pt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600">
-              <span className="text-slate-500">Cự ly thi đấu:</span>
-              <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 font-bold text-slate-800">5KM</span>
-              <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 font-bold text-slate-800">10KM</span>
-              <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 font-bold text-slate-800">21KM</span>
-              <span className="px-2.5 py-1 rounded-md bg-orange-50 border border-orange-200 font-bold text-orange-700">
-                Tiếp sức gia đình 3 thế hệ
+            {/* Live Countdown Micro Ticker */}
+            <div className="mt-8 inline-flex items-center gap-4 px-4 py-2 rounded-xl bg-[#EEE5D7]/50 border border-[#EEE5D7] self-start text-xs font-mono text-[#18233A]">
+              <span className="flex items-center gap-1.5 font-bold text-[#F26522]">
+                <Clock className="w-3.5 h-3.5" />
+                <span>ĐẾM NGƯỢC:</span>
               </span>
+              <span className="font-bold text-[#18233A]">
+                {timeLeft.days}d : {String(timeLeft.hours).padStart(2, '0')}h : {String(timeLeft.minutes).padStart(2, '0')}m : {String(timeLeft.seconds).padStart(2, '0')}s
+              </span>
+              <span className="text-[#8C9BAE] hidden sm:inline">| Kỷ lục 45 năm tiếp nối</span>
             </div>
 
           </div>
 
-          {/* Right Column: Visual Poster Card */}
+          {/* RIGHT COLUMN: ~42% (5 cols on 12-col grid) */}
+          {/* Integrated Editorial Visual (NOT a separate UI card with duplicate title) */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
+            <div className="relative mx-auto max-w-lg lg:max-w-none">
               
-              {/* Soft ambient glow */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-orange-400/30 via-amber-300/30 to-sky-300/30 rounded-3xl blur-xl opacity-60 pointer-events-none" />
-
-              {/* Main Poster Showcase Frame */}
-              <div className="relative rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-xl">
+              {/* Main Artwork Container (Refined radius 20-24px, integrated styling) */}
+              <div className="relative rounded-[24px] overflow-hidden bg-[#18233A] shadow-[0_20px_50px_rgba(24,35,58,0.12)] border border-[#EEE5D7]/60 aspect-[4/5] sm:aspect-[4/5]">
                 
-                <div className="relative h-[440px] sm:h-[480px] w-full overflow-hidden bg-gradient-to-b from-sky-400 via-sky-200 to-amber-100 flex flex-col justify-between p-6">
-                  
-                  {/* Sky, Sun & Sala skyline silhouette */}
-                  <div className="absolute inset-0 z-0 opacity-80 pointer-events-none">
-                    <div className="absolute top-6 left-8 w-32 h-10 bg-white/70 rounded-full blur-xs" />
-                    <div className="absolute top-12 right-12 w-48 h-14 bg-white/80 rounded-full blur-xs" />
-                    <div className="absolute -top-10 -right-10 w-44 h-44 bg-amber-200/90 rounded-full blur-xl" />
+                {/* Athletic Lifestyle Photography */}
+                <img
+                  src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1200&q=85"
+                  alt="Biti's 45 Năm Bước Chạm Bước Runners"
+                  className="absolute inset-0 w-full h-full object-cover object-center filter saturate-110 brightness-95"
+                />
+
+                {/* Subtle Editorial Gradient Overlay for Text Readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#18233A] via-[#18233A]/30 to-black/20" />
+
+                {/* Top Badge: 45th Anniversary Heritage Mark */}
+                <div className="absolute top-6 left-6 right-6 flex items-center justify-between text-white z-10">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/40 backdrop-blur-md border border-white/15 text-xs font-mono font-bold tracking-wider">
+                    <span className="w-2 h-2 rounded-full bg-[#F26522]" />
+                    <span>EST. 1982 → 2027</span>
+                  </div>
+
+                  <div className="text-right">
+                    <span className="text-[10px] font-heading font-extrabold uppercase tracking-widest text-white/80 block">
+                      KĐT SALA
+                    </span>
+                    <span className="text-xs font-mono font-bold text-white block">
+                      TP. THỦ ĐỨC
+                    </span>
+                  </div>
+                </div>
+
+                {/* Center / Lower-Third: Integrated Race Bib Graphic */}
+                <div className="absolute bottom-6 left-6 right-6 z-10">
+                  <div className="bg-[#FAF7F1]/95 backdrop-blur-md rounded-2xl p-5 border border-white/60 shadow-lg text-[#18233A]">
                     
-                    {/* Ba Son Bridge Silhouette */}
-                    <svg
-                      className="absolute bottom-24 left-0 right-0 w-full h-32 opacity-30"
-                      viewBox="0 0 400 120"
-                      preserveAspectRatio="none"
-                    >
-                      <rect x="240" y="20" width="18" height="90" fill="#0369A1" />
-                      <polygon points="249,10 240,20 258,20" fill="#0369A1" />
-                      <rect x="225" y="45" width="12" height="65" fill="#0284C7" />
-                      <rect x="262" y="50" width="16" height="60" fill="#0284C7" />
-                      <polygon points="340,30 336,110 344,110" fill="#64748B" />
-                      <line x1="340" y1="35" x2="310" y2="100" stroke="#64748B" strokeWidth="1.5" />
-                      <line x1="340" y1="45" x2="295" y2="100" stroke="#64748B" strokeWidth="1.5" />
-                      <line x1="340" y1="35" x2="370" y2="100" stroke="#64748B" strokeWidth="1.5" />
-                      <line x1="340" y1="45" x2="385" y2="100" stroke="#64748B" strokeWidth="1.5" />
-                    </svg>
-                  </div>
-
-                  {/* Top Bar inside Poster */}
-                  <div className="relative z-10 flex items-center justify-between">
-                    <div className="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-xl shadow-xs border border-white/80 flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-[#005BAC] flex items-center justify-center text-white font-heading font-black text-xs">
-                        45
-                      </div>
-                      <div>
-                        <span className="font-heading font-black text-xs text-[#005BAC] block leading-none">
-                          BITI'S
+                    {/* Race Bib Header */}
+                    <div className="flex items-center justify-between pb-3 border-b border-[#EEE5D7]">
+                      <div className="flex items-center gap-2">
+                        <span className="font-heading font-black text-sm text-[#005EB8] tracking-tight">
+                          BITI’S 45
                         </span>
-                        <span className="text-[8px] font-bold text-orange-600 block mt-0.5 uppercase">
-                          BƯỚC CHẠM BƯỚC
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C9BAE]">
+                          OFFICIAL RACE
                         </span>
                       </div>
+                      <span className="px-2 py-0.5 rounded bg-[#F26522] text-white text-[10px] font-bold uppercase tracking-wider">
+                        CHIP TIMED
+                      </span>
                     </div>
 
-                    <div className="bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-mono font-bold px-3 py-1 rounded-lg">
-                      07.03.2027
+                    {/* Big Bold BIB Number */}
+                    <div className="flex items-baseline justify-between py-2">
+                      <span className="font-mono font-black text-4xl sm:text-5xl text-[#18233A] tracking-tighter">
+                        #1982-2027
+                      </span>
+                      <span className="text-xs font-heading font-bold text-[#526077] uppercase tracking-wide">
+                        SALA RUN
+                      </span>
                     </div>
+
+                    {/* Bib Footer Data */}
+                    <div className="pt-2 border-t border-[#EEE5D7] flex items-center justify-between text-xs text-[#526077]">
+                      <span>Cự ly: <strong>5K · 10K · 21K</strong></span>
+                      <span className="text-[#005EB8] font-bold">Nâng niu bước chạy Việt</span>
+                    </div>
+
                   </div>
-
-                  {/* Central Visual Graphic inside Poster */}
-                  <div className="relative z-10 my-auto text-center py-4">
-                    <div className="font-heading font-black text-4xl sm:text-5xl text-white tracking-tighter uppercase filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)]">
-                      BƯỚC <span className="text-amber-300 italic">chạm</span> BƯỚC
-                    </div>
-                    <p className="text-xs sm:text-sm font-semibold text-slate-800 mt-2 bg-white/70 backdrop-blur-xs inline-block px-3.5 py-1 rounded-full border border-white/60">
-                      Ghi dấu hiện tại, tiếp bước tương lai
-                    </p>
-                  </div>
-
-                  {/* Bottom Footer inside Poster */}
-                  <div className="relative z-10 bg-white/95 backdrop-blur-md p-3 rounded-xl border border-white/80 shadow-xs flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2 text-slate-700">
-                      <Users className="w-4 h-4 text-orange-500" />
-                      <span className="font-bold">Gia đình 3 thế hệ & Cá nhân</span>
-                    </div>
-                    <span className="text-[11px] font-bold text-[#005BAC]">KĐT Sala, TP.HCM</span>
-                  </div>
-
                 </div>
 
               </div>

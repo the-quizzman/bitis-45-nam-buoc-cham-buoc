@@ -2,12 +2,13 @@
 
 @layer base {
   :root {
-    --brand-blue: #005BAC;
-    --brand-orange: #FF6B00;
-    --brand-amber: #F59E0B;
-    --brand-emerald: #10B981;
-    --surface-bg: #F8FAFC;
-    --text-main: #0F172A;
+    --brand-blue: #005EB8;
+    --brand-orange: #F26522;
+    --ink: #18233A;
+    --surface-warm: #FAF7F1;
+    --surface-cool: #F3F7FA;
+    --surface-sand: #EEE5D7;
+    --surface-white: #FFFFFF;
   }
 
   html {
@@ -18,47 +19,43 @@
 
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: var(--surface-bg);
-    color: var(--text-main);
+    background-color: var(--surface-warm);
+    color: var(--ink);
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
 
   h1, h2, h3, h4, h5, h6, .font-heading {
     font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #FAF7F1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #D8CEBE;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #B6A996;
 }
 
-/* Sports visual text effects */
-.text-shadow-fire {
-  text-shadow: 0 2px 0 #9A3412, 0 4px 10px rgba(234, 88, 12, 0.35);
+/* Restrained animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 0.9; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.015); }
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 4s ease-in-out infinite;
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
 }

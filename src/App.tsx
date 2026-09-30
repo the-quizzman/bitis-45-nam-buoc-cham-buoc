@@ -7,10 +7,8 @@ import React, { useState, useEffect } from 'react';
 import { DistanceType, RegistrationType, SectionTab } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Countdown } from './components/Countdown';
-import { HistoryTimeline } from './components/HistoryTimeline';
-import { BigIdeaSection } from './components/BigIdeaSection';
 import { RaceDistances } from './components/RaceDistances';
+import { HistoryTimeline } from './components/HistoryTimeline';
 import { RouteMap } from './components/RouteMap';
 import { RaceSchedule } from './components/RaceSchedule';
 import { AthleteBenefits } from './components/AthleteBenefits';
@@ -56,7 +54,7 @@ export default function App() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const navOffset = 70;
+      const navOffset = 76;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: elementPosition - navOffset,
@@ -70,18 +68,18 @@ export default function App() {
     const map: Record<string, string> = {
       hero: 'heritage',
       story: 'heritage',
+      heritage: 'heritage',
       distances: 'distances',
       family: 'distances',
       route: 'route-schedule',
       schedule: 'route-schedule',
+      'route-schedule': 'route-schedule',
       benefits: 'benefits',
       news: 'news-gallery',
       gallery: 'news-gallery',
+      'news-gallery': 'news-gallery',
       sponsors: 'faq-sponsors',
       faq: 'faq-sponsors',
-      heritage: 'heritage',
-      'route-schedule': 'route-schedule',
-      'news-gallery': 'news-gallery',
       'faq-sponsors': 'faq-sponsors',
     };
 
@@ -90,8 +88,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
-      {/* Sticky Navigation */}
+    <div className="min-h-screen bg-[#FAF7F1] text-[#18233A] font-sans selection:bg-[#F26522] selection:text-white">
+      {/* Sticky Navigation (76px height, editorial aesthetic) */}
       <Navbar
         onOpenRegister={() => handleOpenRegister()}
         onOpenLookup={handleOpenLookup}
@@ -104,18 +102,13 @@ export default function App() {
       {/* Main Content Area */}
       {currentView === 'landing' ? (
         <main>
-          {/* CỤM 1: DI SẢN 45 NĂM & THÔNG ĐIỆP BƯỚC CHẠM BƯỚC */}
-          <div id="heritage" className="scroll-mt-20">
-            <Hero
-              onRegisterClick={() => handleOpenRegister()}
-              onExploreClick={() => scrollToSection('distances')}
-            />
-            <Countdown />
-            <BigIdeaSection />
-            <HistoryTimeline />
-          </div>
+          {/* VIEWPORT 1: HERO (3-second comprehension: 45th anniversary, BƯỚC CHẠM BƯỚC, date, location, main CTA) */}
+          <Hero
+            onRegisterClick={() => handleOpenRegister()}
+            onExploreClick={() => scrollToSection('distances')}
+          />
 
-          {/* CỤM 2: CỰ LY & TIẾP SỨC GIA ĐÌNH 3 THẾ HỆ */}
+          {/* VIEWPORT 2: CỰ LY THI ĐẤU (4 large editorial tiles: 5KM, 10KM, 21KM, Tiếp sức gia đình 3 thế hệ) */}
           <div id="distances" className="scroll-mt-20">
             <RaceDistances
               onSelectDistance={(d) => handleOpenRegister(d, false)}
@@ -123,24 +116,29 @@ export default function App() {
             />
           </div>
 
-          {/* CỤM 3: CUNG ĐƯỜNG SALA & LỊCH TRÌNH */}
+          {/* VIEWPORT 3: DI SẢN 45 NĂM (Horizontal timeline: 1982 → 2000s → Today → 2027) */}
+          <div id="heritage" className="scroll-mt-20">
+            <HistoryTimeline />
+          </div>
+
+          {/* VIEWPORT 4: HÀNH TRÌNH & CUNG ĐƯỜNG SALA */}
           <div id="route-schedule" className="scroll-mt-20">
             <RouteMap />
             <RaceSchedule />
           </div>
 
-          {/* CỤM 4: QUYỀN LỢI & TRỌN BỘ RACE KIT */}
+          {/* VIEWPORT 5: VẬT PHẨM & QUYỀN LỢI VẬN ĐỘNG VIÊN */}
           <div id="benefits" className="scroll-mt-20">
             <AthleteBenefits />
           </div>
 
-          {/* CỤM 5: BẢN TIN SỰ KIỆN & KHOẢNH KHẮC RUNNER */}
+          {/* VIEWPORT 6: TIN TỨC & KHOẢNH KHẮC RUNNER */}
           <div id="news-gallery" className="scroll-mt-20">
             <NewsSection />
             <GallerySection />
           </div>
 
-          {/* CỤM 6: CÂU HỎI THƯỜNG GẶP (FAQ) & ĐỐI TÁC ĐỒNG HÀNH */}
+          {/* VIEWPORT 7: CÂU HỎI THƯỜNG GẶP (FAQ) & ĐỐI TÁC ĐỒNG HÀNH */}
           <div id="faq-sponsors" className="scroll-mt-20">
             <FaqSection />
             <SponsorsSection />
@@ -159,7 +157,7 @@ export default function App() {
             <div className="fixed bottom-6 right-6 z-40 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-4 duration-300">
               <button
                 onClick={() => handleOpenRegister()}
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white font-heading font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-orange-500/30 transition-transform active:scale-95 cursor-pointer"
+                className="hidden sm:inline-flex items-center gap-2 px-5 py-3 bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-95 cursor-pointer"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Đăng ký ngay</span>
@@ -167,7 +165,7 @@ export default function App() {
 
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="p-3 bg-white text-slate-700 hover:text-orange-600 rounded-xl shadow-lg border border-slate-200 transition-transform active:scale-95 cursor-pointer"
+                className="p-3 bg-white text-[#18233A] hover:text-[#F26522] rounded-xl shadow-lg border border-[#EEE5D7] transition-transform active:scale-95 cursor-pointer"
                 title="Lên đầu trang"
                 aria-label="Lên đầu trang"
               >

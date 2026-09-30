@@ -9,7 +9,7 @@ import {
   FileCheck,
   Gift,
   Tag,
-  Sparkles,
+  CheckCircle2,
 } from 'lucide-react';
 import { ATHLETE_BENEFITS } from '../data/mockData';
 
@@ -17,60 +17,60 @@ export const AthleteBenefits: React.FC = () => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'bib':
-        return <Tag className="w-6 h-6 text-orange-500" />;
+        return <Tag className="w-5 h-5 text-[#F26522]" />;
       case 'shirt':
-        return <Shirt className="w-6 h-6 text-amber-500" />;
+        return <Shirt className="w-5 h-5 text-[#005EB8]" />;
       case 'medal':
-        return <Award className="w-6 h-6 text-orange-600" />;
+        return <Award className="w-5 h-5 text-[#F26522]" />;
       case 'shield':
-        return <Shield className="w-6 h-6 text-emerald-600" />;
+        return <Shield className="w-5 h-5 text-[#005EB8]" />;
       case 'droplet':
-        return <Droplets className="w-6 h-6 text-sky-500" />;
+        return <Droplets className="w-5 h-5 text-[#005EB8]" />;
       case 'package':
-        return <Package className="w-6 h-6 text-purple-600" />;
+        return <Package className="w-5 h-5 text-[#F26522]" />;
       case 'camera':
-        return <Camera className="w-6 h-6 text-rose-500" />;
+        return <Camera className="w-5 h-5 text-[#005EB8]" />;
       case 'award':
-        return <FileCheck className="w-6 h-6 text-indigo-600" />;
+        return <FileCheck className="w-5 h-5 text-[#005EB8]" />;
       case 'gift':
-        return <Gift className="w-6 h-6 text-amber-600" />;
+        return <Gift className="w-5 h-5 text-[#F26522]" />;
       default:
-        return <Sparkles className="w-6 h-6 text-orange-500" />;
+        return <Award className="w-5 h-5 text-[#F26522]" />;
     }
   };
 
   return (
-    <section id="benefits" className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="benefits" className="py-24 sm:py-32 bg-white text-[#18233A] relative">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-heading font-black tracking-widest text-orange-600 uppercase mb-2 inline-block">
-            VẬT PHẨM & QUYỀN LỢI
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#F26522] mb-3 block">
+            VẬT PHẨM & ĐẶC QUYỀN
           </span>
-          <h2 className="font-heading font-black text-3xl sm:text-5xl text-slate-900 uppercase tracking-tight">
-            TRỌN BỘ RACE KIT VẬN ĐỘNG VIÊN
+          <h2 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#18233A] leading-tight">
+            Trọn bộ Race Kit vận động viên
           </h2>
-          <p className="mt-3 text-slate-600 text-sm sm:text-base">
-            Mỗi vận động viên đều được trang bị đầy đủ vật phẩm thi đấu độc quyền và sự chăm sóc y tế, tiếp sức toàn diện.
+          <p className="mt-4 text-[#526077] text-base sm:text-lg leading-relaxed">
+            Mỗi vận động viên đều được trang bị trọn gói vật phẩm thi đấu độc quyền Biti's 45 năm và sự chăm sóc y tế, tiếp sức chuyên nghiệp trên từng km.
           </p>
         </div>
 
-        {/* 9 Athlete Perks Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 9 Athlete Perks Cards Grid (Restrained, elegant editorial styling) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ATHLETE_BENEFITS.map((item, index) => (
             <div
               key={index}
-              className="group p-6 rounded-3xl bg-slate-50 border border-orange-100 hover:border-orange-400 hover:bg-white hover:shadow-xl transition-all duration-300 flex items-start gap-4"
+              className="p-7 rounded-2xl bg-[#FAF7F1] border border-[#EEE5D7] hover:border-[#F26522]/40 hover:bg-white transition-all duration-300 flex items-start gap-4 shadow-[0_2px_10px_rgba(24,35,58,0.02)]"
             >
-              <div className="p-3.5 rounded-2xl bg-white group-hover:bg-orange-50 border border-orange-200/60 group-hover:border-orange-300 transition-colors shrink-0 shadow-xs">
+              <div className="p-3 rounded-xl bg-white border border-[#EEE5D7] shrink-0 shadow-xs">
                 {getIcon(item.icon)}
               </div>
               <div>
-                <h3 className="font-heading font-black text-lg text-slate-900 group-hover:text-orange-600 transition-colors">
+                <h3 className="font-heading font-bold text-base sm:text-lg text-[#18233A]">
                   {item.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#526077] mt-1.5 leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -78,26 +78,26 @@ export const AthleteBenefits: React.FC = () => {
           ))}
         </div>
 
-        {/* Highlight Medal & Shirt Showcase Banner */}
-        <div className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white shadow-xl shadow-orange-500/25 border-2 border-amber-300 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2">
-            <span className="text-xs font-mono font-black text-amber-200 uppercase tracking-wider bg-white/20 px-2.5 py-1 rounded-md">
-              PHIÊN BẢN GIỚI HẠN 45 NĂM
+        {/* Highlight Finisher Medal & Exclusive Race Shirt Box (Deep ink contrast) */}
+        <div className="mt-12 p-8 sm:p-12 rounded-[24px] bg-[#18233A] text-white flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 shadow-xl">
+          <div className="space-y-3 max-w-2xl">
+            <span className="inline-block text-[11px] font-mono font-bold tracking-widest uppercase text-[#F26522] bg-white/10 px-3 py-1 rounded-md">
+              KỶ NIỆM 45 NĂM ĐỘC QUYỀN
             </span>
-            <h4 className="font-heading font-black text-xl sm:text-2xl text-white">
-              Huy Chương Finisher & Áo Chạy Độc Bản
+            <h4 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
+              Huy Chương Đúc Nổi & Áo Chạy Air-Breeze
             </h4>
-            <p className="text-xs sm:text-sm text-amber-50 max-w-xl">
-              Được thiết kế tinh xảo từ hình tượng chiếc đế giày uốn lượn vượt thời gian, khắc họa tinh thần bền bỉ của người Việt suốt 45 năm qua.
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Mặt trước huy chương khắc họa hình tượng đế giày uốn lượn vượt thời gian từ 1982. Áo chạy thể thao công nghệ dệt siêu thoáng khí hỗ trợ vận động viên bứt phá thành tích cao nhất.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="px-4 py-2.5 rounded-xl bg-white/20 text-xs font-bold text-white border border-white/40 backdrop-blur-xs">
-              Công nghệ dệt Air-Breeze
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto shrink-0">
+            <div className="px-5 py-3 rounded-xl bg-white/10 border border-white/15 text-xs font-mono font-bold text-white text-center">
+              Dệt tản nhiệt Air-Breeze
             </div>
-            <div className="px-4 py-2.5 rounded-xl bg-white text-xs font-black text-orange-600 shadow-md">
-              Huy chương đúc nổi 3D sắc nét
+            <div className="px-5 py-3 rounded-xl bg-[#F26522] text-xs font-heading font-bold uppercase tracking-wider text-white text-center shadow-md">
+              Huy chương đúc 3D
             </div>
           </div>
         </div>
