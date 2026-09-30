@@ -49,20 +49,20 @@ export const RegistrationLookup: React.FC<RegistrationLookupProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 text-slate-900">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#18233A]/60 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl border border-[#EEE5D7] text-[#18233A]">
         
         {/* Top Header */}
-        <div className="px-5 py-4 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white flex items-center justify-between shrink-0 shadow-sm">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-heading font-black text-sm">
+        <div className="px-6 py-4 bg-[#FAF7F1] border-b border-[#EEE5D7] flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#005EB8] flex items-center justify-center font-heading font-black text-sm text-white shadow-xs">
               <Search className="w-4 h-4 text-white" />
             </div>
             <div>
-              <h3 className="font-heading font-black text-sm sm:text-base uppercase tracking-tight">
+              <h3 className="font-heading font-black text-sm sm:text-base text-[#18233A] uppercase tracking-tight leading-none">
                 TRA CỨU THÔNG TIN ĐĂNG KÝ
               </h3>
-              <span className="text-[10px] text-amber-100 block">
+              <span className="text-[11px] text-[#526077] block mt-1">
                 Kiểm tra số BIB, thẻ điện tử & tình trạng nhận Race Kit
               </span>
             </div>
@@ -70,7 +70,8 @@ export const RegistrationLookup: React.FC<RegistrationLookupProps> = ({
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg hover:bg-white/20 text-white transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg hover:bg-black/5 text-[#18233A]/60 hover:text-[#18233A] transition-colors cursor-pointer"
+            aria-label="Đóng"
           >
             <X className="w-5 h-5" />
           </button>
@@ -81,7 +82,7 @@ export const RegistrationLookup: React.FC<RegistrationLookupProps> = ({
           
           {/* Search Form */}
           <form onSubmit={handleSearch} className="space-y-2.5">
-            <label className="block text-xs font-bold text-slate-700">
+            <label className="block text-xs font-heading font-bold text-[#18233A]">
               Nhập Số điện thoại, Email hoặc Mã đăng ký (BITI45-XXXXXX):
             </label>
             <div className="flex flex-col sm:flex-row gap-2">
@@ -91,13 +92,13 @@ export const RegistrationLookup: React.FC<RegistrationLookupProps> = ({
                   placeholder="Ví dụ: 0908123456 hoặc BITI45-774920"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E8EDF2] focus:border-[#F26522] focus:ring-1 focus:ring-[#F26522]/20 text-sm text-[#18233A] placeholder:text-[#8C9BAE] outline-none transition-all"
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center px-6 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer shrink-0"
+                className="inline-flex items-center justify-center px-6 py-2.5 bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer shrink-0"
               >
                 Tra cứu
               </button>

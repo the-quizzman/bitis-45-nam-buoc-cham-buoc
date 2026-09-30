@@ -326,28 +326,29 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
   const stepNames = ['Hình thức', 'Cự ly', 'Thông tin', 'Xác nhận', 'Thanh toán'];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 text-slate-900">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-[#18233A]/60 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-[#EEE5D7] text-[#18233A]">
         
         {/* Top Header */}
-        <div className="px-5 py-4 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white flex items-center justify-between shrink-0 shadow-sm">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-heading font-black text-sm text-white">
+        <div className="px-6 py-4 bg-[#FAF7F1] border-b border-[#EEE5D7] flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#005EB8] flex items-center justify-center font-heading font-black text-sm text-white shadow-xs">
               45
             </div>
             <div>
-              <h3 className="font-heading font-black text-sm sm:text-base uppercase tracking-tight">
+              <h3 className="font-heading font-black text-sm sm:text-base text-[#18233A] uppercase tracking-tight leading-none">
                 ĐĂNG KÝ THAM GIA BƯỚC CHẠM BƯỚC
               </h3>
-              <span className="text-[10px] text-amber-100 block">
-                Kỷ niệm 45 năm Biti's • 07/03/2027 Khu đô thị Sala
+              <span className="text-[11px] text-[#526077] block mt-1">
+                Kỷ niệm 45 năm Biti's · 07/03/2027 · Khu đô thị Sala, TP. Thủ Đức
               </span>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg hover:bg-white/20 text-white transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg hover:bg-black/5 text-[#18233A]/60 hover:text-[#18233A] transition-colors cursor-pointer"
+            aria-label="Đóng"
           >
             <X className="w-5 h-5" />
           </button>
@@ -355,28 +356,28 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
 
         {/* Step Progress Indicator */}
         {step < 6 && (
-          <div className="px-5 py-2.5 bg-slate-50 border-b border-slate-200 shrink-0">
+          <div className="px-6 py-3 bg-white border-b border-[#EEE5D7] shrink-0">
             {/* Desktop step labels */}
-            <div className="hidden sm:flex items-center justify-between text-xs font-bold text-slate-500">
-              <span className={step >= 1 ? 'text-orange-600' : ''}>1. Hình thức</span>
-              <span>→</span>
-              <span className={step >= 2 ? 'text-orange-600' : ''}>2. Cự ly</span>
-              <span>→</span>
-              <span className={step >= 3 ? 'text-orange-600' : ''}>3. Thông tin</span>
-              <span>→</span>
-              <span className={step >= 4 ? 'text-orange-600' : ''}>4. Xác nhận</span>
-              <span>→</span>
-              <span className={step >= 5 ? 'text-orange-600' : ''}>5. Thanh toán</span>
+            <div className="hidden sm:flex items-center justify-between text-xs font-heading font-bold text-[#8C9BAE]">
+              <span className={step >= 1 ? 'text-[#F26522]' : ''}>1. Hình thức</span>
+              <span className="text-[#EEE5D7]">→</span>
+              <span className={step >= 2 ? 'text-[#F26522]' : ''}>2. Cự ly</span>
+              <span className="text-[#EEE5D7]">→</span>
+              <span className={step >= 3 ? 'text-[#F26522]' : ''}>3. Thông tin</span>
+              <span className="text-[#EEE5D7]">→</span>
+              <span className={step >= 4 ? 'text-[#F26522]' : ''}>4. Xác nhận</span>
+              <span className="text-[#EEE5D7]">→</span>
+              <span className={step >= 5 ? 'text-[#F26522]' : ''}>5. Thanh toán</span>
             </div>
             {/* Mobile single step label */}
-            <div className="flex sm:hidden items-center justify-between text-xs font-bold text-slate-700">
-              <span className="text-orange-600">BƯỚC {step} / 5</span>
-              <span>{stepNames[step - 1]}</span>
+            <div className="flex sm:hidden items-center justify-between text-xs font-heading font-bold text-[#18233A]">
+              <span className="text-[#F26522]">BƯỚC {step} / 5</span>
+              <span className="text-[#526077]">{stepNames[step - 1]}</span>
             </div>
             {/* Progress bar */}
-            <div className="w-full bg-slate-200 h-1.5 rounded-full mt-1.5 overflow-hidden">
+            <div className="w-full bg-[#EEE5D7] h-1.5 rounded-full mt-2 overflow-hidden">
               <div
-                className="bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 h-full transition-all duration-300 rounded-full"
+                className="bg-[#F26522] h-full transition-all duration-300 rounded-full"
                 style={{ width: `${(step / 5) * 100}%` }}
               />
             </div>
@@ -390,13 +391,13 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           {step === 1 && (
             <div className="space-y-6">
               <div className="text-center max-w-md mx-auto">
-                <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">
+                <span className="text-xs font-heading font-bold text-[#F26522] uppercase tracking-wider">
                   BƯỚC 1 / 5
                 </span>
-                <h4 className="font-heading font-black text-2xl text-slate-900 mt-1">
+                <h4 className="font-heading font-black text-2xl text-[#18233A] mt-1">
                   CHỌN HÌNH THỨC THAM GIA
                 </h4>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-xs text-[#526077] mt-1">
                   Bạn muốn tham gia thử thách bản thân với tư cách cá nhân hay cùng gia đình tiếp sức?
                 </p>
               </div>
@@ -405,24 +406,24 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 {/* Personal Option */}
                 <div
                   onClick={() => setRegType('personal')}
-                  className={`p-6 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-6 rounded-2xl transition-all cursor-pointer flex flex-col justify-between ${
                     regType === 'personal'
-                      ? 'border-orange-500 bg-amber-50/50 shadow-md ring-2 ring-orange-500/20'
-                      : 'border-slate-200 hover:border-orange-300 bg-white'
+                      ? 'border-2 border-[#F26522] bg-[#FFF8F3] shadow-sm'
+                      : 'border border-[#EEE5D7] hover:border-[#18233A]/40 bg-white'
                   }`}
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#FAF7F1] text-[#005EB8] border border-[#EEE5D7] flex items-center justify-center mb-4">
                       <User className="w-6 h-6" />
                     </div>
-                    <h5 className="font-heading font-black text-xl text-slate-900">
+                    <h5 className="font-heading font-black text-xl text-[#18233A]">
                       CÁ NHÂN
                     </h5>
-                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    <p className="text-xs text-[#526077] mt-2 leading-relaxed">
                       Dành cho vận động viên tự do, người yêu thích chạy bộ. Tùy chọn 3 cự ly 5KM, 10KM hoặc 21KM.
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-orange-600">
+                  <div className="mt-4 pt-3 border-t border-[#EEE5D7] flex items-center justify-between text-xs font-heading font-bold text-[#F26522]">
                     <span>Chọn cá nhân</span>
                     <CheckCircle2 className={`w-4 h-4 ${regType === 'personal' ? 'opacity-100' : 'opacity-20'}`} />
                   </div>
@@ -431,24 +432,24 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                 {/* Family Option */}
                 <div
                   onClick={() => setRegType('family')}
-                  className={`p-6 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-6 rounded-2xl transition-all cursor-pointer flex flex-col justify-between ${
                     regType === 'family'
-                      ? 'border-orange-500 bg-amber-50/50 shadow-md ring-2 ring-orange-500/20'
-                      : 'border-slate-200 hover:border-orange-300 bg-white'
+                      ? 'border-2 border-[#F26522] bg-[#FFF8F3] shadow-sm'
+                      : 'border border-[#EEE5D7] hover:border-[#18233A]/40 bg-white'
                   }`}
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#FAF7F1] text-[#F26522] border border-[#EEE5D7] flex items-center justify-center mb-4">
                       <Users className="w-6 h-6" />
                     </div>
-                    <h5 className="font-heading font-black text-xl text-slate-900">
+                    <h5 className="font-heading font-black text-xl text-[#18233A]">
                       GIA ĐÌNH TIẾP SỨC
                     </h5>
-                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    <p className="text-xs text-[#526077] mt-2 leading-relaxed">
                       Đội 3 thành viên đại diện 3 thế hệ (Ông/bà, Cha/mẹ, Con cái). Tiếp sức trao gậy cùng nhau về đích.
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-orange-600">
+                  <div className="mt-4 pt-3 border-t border-[#EEE5D7] flex items-center justify-between text-xs font-heading font-bold text-[#F26522]">
                     <span>Chọn đội gia đình</span>
                     <CheckCircle2 className={`w-4 h-4 ${regType === 'family' ? 'opacity-100' : 'opacity-20'}`} />
                   </div>
@@ -461,13 +462,13 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           {step === 2 && (
             <div className="space-y-6">
               <div className="text-center max-w-md mx-auto">
-                <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">
+                <span className="text-xs font-heading font-bold text-[#F26522] uppercase tracking-wider">
                   BƯỚC 2 / 5
                 </span>
-                <h4 className="font-heading font-black text-2xl text-slate-900 mt-1">
+                <h4 className="font-heading font-black text-2xl text-[#18233A] mt-1">
                   {regType === 'personal' ? 'CHỌN CỰ LY THI ĐẤU' : 'HẠNG MỤC GIA ĐÌNH 3 THẾ HỆ'}
                 </h4>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-xs text-[#526077] mt-1">
                   {regType === 'personal'
                     ? 'Chọn thử thách phù hợp với thể lực của bạn.'
                     : 'Hạng mục Family Relay tiêu chuẩn tiếp sức 3 chặng đại diện 3 thế hệ.'}
@@ -480,20 +481,20 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                     <div
                       key={d}
                       onClick={() => setDistance(d)}
-                      className={`p-5 rounded-2xl border-2 transition-all cursor-pointer text-center flex flex-col justify-between ${
+                      className={`p-5 rounded-2xl transition-all cursor-pointer text-center flex flex-col justify-between ${
                         distance === d
-                          ? 'border-orange-500 bg-amber-50/60 shadow-md ring-2 ring-orange-500/20'
-                          : 'border-slate-200 hover:border-orange-300 bg-white'
+                          ? 'border-2 border-[#F26522] bg-[#FFF8F3] shadow-sm'
+                          : 'border border-[#EEE5D7] hover:border-[#18233A]/40 bg-white'
                       }`}
                     >
                       <div>
-                        <div className="font-heading font-black text-4xl text-slate-900 mb-1">
+                        <div className="font-heading font-black text-4xl text-[#18233A] mb-1">
                           {d}
                         </div>
-                        <div className="text-xs font-bold text-orange-600 uppercase">
+                        <div className="text-xs font-heading font-bold text-[#F26522] uppercase">
                           {d === '5KM' ? 'Khởi Bước Đam Mê' : d === '10KM' ? 'Bứt Phá Giới Hạn' : 'Half Marathon'}
                         </div>
-                        <p className="text-[11px] text-slate-500 mt-2">
+                        <p className="text-[11px] text-[#526077] mt-2">
                           {d === '5KM'
                             ? 'Người mới & trải nghiệm'
                             : d === '10KM'
@@ -502,24 +503,24 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                         </p>
                       </div>
 
-                      <div className="mt-4 pt-3 border-t border-slate-200">
-                        <span className="text-xs font-bold text-slate-800">
+                      <div className="mt-4 pt-3 border-t border-[#EEE5D7]">
+                        <span className="text-xs font-heading font-bold text-[#18233A]">
                           {formatCurrency(d === '5KM' ? 350000 : d === '10KM' ? 500000 : 700000)}
                         </span>
-                        <span className="text-[10px] text-slate-400 block">(Minh họa)</span>
+                        <span className="text-[10px] text-[#8C9BAE] block">(Minh họa)</span>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="p-6 rounded-2xl bg-amber-50/70 border border-amber-200 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-amber-500 text-white flex items-center justify-center mx-auto">
+                <div className="p-6 rounded-2xl bg-[#FFF8F3] border border-[#F26522]/40 text-center space-y-3">
+                  <div className="w-12 h-12 rounded-full bg-[#F26522] text-white flex items-center justify-center mx-auto shadow-sm">
                     <Sparkles className="w-6 h-6" />
                   </div>
-                  <h5 className="font-heading font-black text-xl text-amber-950 uppercase">
+                  <h5 className="font-heading font-black text-xl text-[#18233A] uppercase">
                     Hạng Mục Tiếp Sức 3 Thế Hệ (Family Relay)
                   </h5>
-                  <p className="text-xs text-amber-800 max-w-md mx-auto leading-relaxed">
+                  <p className="text-xs text-[#526077] max-w-md mx-auto leading-relaxed">
                     Mỗi đội gồm 3 thành viên đại diện cho 3 thế hệ (Ông/bà, Cha/mẹ, Con cháu) chạy nối tiếp nhau trên cung đường Sala. Cả 3 cùng hoàn thành và mỗi thành viên đều nhận Huy chương hoàn thành chính thức kỷ niệm 45 năm Biti's.
                   </p>
                   <div className="text-sm font-bold text-amber-900 pt-2">
@@ -1269,11 +1270,11 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
         </div>
 
         {/* Modal Bottom Footer Actions */}
-        <div className="px-5 py-3.5 bg-slate-50 border-t border-slate-200 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 shrink-0">
+        <div className="px-6 py-4 bg-[#FAF7F1] border-t border-[#EEE5D7] flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 shrink-0">
           {step > 1 && step < 6 ? (
             <button
               onClick={() => setStep(step - 1)}
-              className="inline-flex items-center justify-center gap-1 px-4 py-2.5 text-xs font-bold text-slate-600 hover:text-slate-900 rounded-xl hover:bg-slate-200 transition-colors cursor-pointer w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-heading font-bold text-[#18233A] border border-[#18233A]/20 hover:border-[#18233A] rounded-xl hover:bg-black/5 transition-colors cursor-pointer w-full sm:w-auto"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>QUAY LẠI</span>
@@ -1285,7 +1286,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           {step === 1 && (
             <button
               onClick={() => setStep(2)}
-              className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white text-xs font-heading font-extrabold uppercase rounded-xl shadow-md shadow-orange-500/25 transition-all cursor-pointer w-full sm:w-auto sm:ml-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#F26522] hover:bg-[#D95314] text-white text-xs font-heading font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer w-full sm:w-auto sm:ml-auto"
             >
               <span>TIẾP TỤC CHỌN CỰ LY</span>
               <ChevronRight className="w-4 h-4" />
@@ -1295,7 +1296,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           {step === 2 && (
             <button
               onClick={() => setStep(3)}
-              className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white text-xs font-heading font-extrabold uppercase rounded-xl shadow-md shadow-orange-500/25 transition-all cursor-pointer w-full sm:w-auto sm:ml-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#F26522] hover:bg-[#D95314] text-white text-xs font-heading font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer w-full sm:w-auto sm:ml-auto"
             >
               <span>ĐIỀN THÔNG TIN</span>
               <ChevronRight className="w-4 h-4" />
@@ -1305,7 +1306,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           {step === 3 && (
             <button
               onClick={handleNextFromStep3}
-              className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white text-xs font-heading font-extrabold uppercase rounded-xl shadow-md shadow-orange-500/25 transition-all cursor-pointer w-full sm:w-auto sm:ml-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#F26522] hover:bg-[#D95314] text-white text-xs font-heading font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer w-full sm:w-auto sm:ml-auto"
             >
               <span>XEM LẠI THÔNG TIN</span>
               <ChevronRight className="w-4 h-4" />
@@ -1315,7 +1316,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           {step === 4 && (
             <button
               onClick={() => setStep(5)}
-              className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white text-xs font-heading font-extrabold uppercase rounded-xl shadow-md shadow-orange-500/25 transition-all cursor-pointer w-full sm:w-auto sm:ml-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#F26522] hover:bg-[#D95314] text-white text-xs font-heading font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer w-full sm:w-auto sm:ml-auto"
             >
               <span>TIẾP TỤC THANH TOÁN</span>
               <ChevronRight className="w-4 h-4" />
@@ -1326,13 +1327,13 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
             <button
               disabled={isProcessingPayment}
               onClick={handleSimulatePayment}
-              className="inline-flex items-center justify-center gap-1.5 px-8 py-3 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white text-xs font-heading font-black uppercase rounded-xl shadow-lg shadow-orange-500/30 transition-all cursor-pointer disabled:opacity-50 w-full sm:w-auto sm:ml-auto"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-[#F26522] hover:bg-[#D95314] text-white text-xs font-heading font-bold uppercase tracking-wider rounded-xl shadow-xs transition-all cursor-pointer disabled:opacity-50 w-full sm:w-auto sm:ml-auto"
             >
-              <Sparkles className="w-4 h-4 text-amber-200" />
+              <Sparkles className="w-4 h-4 text-white" />
               <span>
                 {isProcessingPayment
                   ? 'ĐANG XỬ LÝ GIAO DỊCH...'
-                  : 'XÁC NHẬN THANH TOÁN (MÔ PHỎNG)'}
+                  : 'XÁC NHẬN THANH TOÁN'}
               </span>
             </button>
           )}
@@ -1340,7 +1341,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
           {step === 6 && (
             <button
               onClick={onClose}
-              className="inline-flex items-center justify-center px-6 py-2.5 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-600 text-white text-xs font-bold uppercase rounded-xl shadow-md shadow-orange-500/25 w-full sm:w-auto sm:ml-auto cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#F26522] hover:bg-[#D95314] text-white text-xs font-heading font-bold uppercase tracking-wider rounded-xl shadow-xs w-full sm:w-auto sm:ml-auto cursor-pointer"
             >
               HOÀN TẤT & ĐÓNG
             </button>
