@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ChevronRight, Clock } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
+import { FlipCountdown } from './FlipCountdown';
 
 interface HeroProps {
   onRegisterClick: () => void;
@@ -45,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-76px)] lg:h-[calc(100vh-76px)] lg:max-h-[calc(100vh-76px)] py-8 lg:py-0 flex items-center bg-[#FAF7F1] text-[#18233A] overflow-hidden"
+      className="relative min-h-[calc(100vh-76px)] lg:h-[calc(100vh-76px)] lg:max-h-[calc(100vh-76px)] py-6 lg:py-0 flex items-center bg-[#FAF7F1] text-[#18233A] overflow-hidden"
     >
       {/* Subtle Editorial Grid Lines Background */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -56,13 +57,13 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* LEFT COLUMN: ~58% (7 cols on 12-col grid) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             
             {/* Small Anniversary Eyebrow */}
-            <div className="flex items-center gap-2 mb-2 lg:mb-2.5">
+            <div className="flex items-center gap-2 mb-1.5 lg:mb-2">
               <span className="w-2 h-2 rounded-full bg-[#F26522]" />
               <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#005EB8]">
                 KỶ NIỆM 45 NĂM BITI’S · 1982–2027
@@ -70,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             </div>
 
             {/* Large Campaign Headline: BƯỚC CHẠM BƯỚC */}
-            <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-[54px] xl:text-[66px] uppercase tracking-tighter leading-[0.92] text-[#18233A]">
+            <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-[48px] xl:text-[60px] uppercase tracking-tighter leading-[0.92] text-[#18233A]">
               <span className="block">BƯỚC</span>
               <span className="block mt-0.5">
                 <span className="text-[#F26522] italic font-serif font-bold lowercase tracking-normal text-[0.88em] mr-2">
@@ -81,7 +82,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             </h1>
 
             {/* Core Message / Tagline */}
-            <div className="mt-2 lg:mt-2.5 flex items-center gap-2.5">
+            <div className="mt-1.5 lg:mt-2 flex items-center gap-2.5">
               <div className="h-0.5 w-6 bg-[#F26522]" />
               <p className="font-heading font-bold text-base sm:text-lg lg:text-xl text-[#18233A] tracking-tight">
                 Ghi dấu hiện tại, tiếp bước tương lai
@@ -89,63 +90,63 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             </div>
 
             {/* Short Emotional Narrative (max 2 lines) */}
-            <p className="mt-1.5 text-[#526077] text-xs sm:text-sm lg:text-base leading-relaxed max-w-xl font-normal line-clamp-2">
+            <p className="mt-1 text-[#526077] text-xs sm:text-sm leading-relaxed max-w-xl font-normal line-clamp-2">
               45 năm từ những bước chân đầu tiên đến triệu bước chân tiếp nối.
               Một hành trình kết nối gia đình, cộng đồng và những thế hệ Việt Nam.
             </p>
 
             {/* ONE Compact Event Information Strip */}
-            <div className="mt-3.5 pt-3 border-t border-[#EEE5D7] grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
+            <div className="mt-2.5 pt-2.5 border-t border-[#EEE5D7] grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-2.5">
               {/* Date */}
               <div>
-                <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Thời gian
                 </span>
-                <span className="block font-heading font-black text-sm lg:text-base text-[#18233A]">
+                <span className="block font-heading font-black text-xs sm:text-sm lg:text-base text-[#18233A]">
                   07.03.2027
                 </span>
-                <span className="block text-[11px] text-[#526077]">Chủ nhật · 04:30 AM</span>
+                <span className="block text-[10px] text-[#526077]">Chủ nhật · 04:30 AM</span>
               </div>
 
               {/* Location */}
               <div>
-                <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Địa điểm
                 </span>
-                <span className="block font-heading font-black text-sm lg:text-base text-[#18233A]">
+                <span className="block font-heading font-black text-xs sm:text-sm lg:text-base text-[#18233A]">
                   KĐT Sala
                 </span>
-                <span className="block text-[11px] text-[#526077]">TP. Thủ Đức, TP.HCM</span>
+                <span className="block text-[10px] text-[#526077]">TP. Thủ Đức, TP.HCM</span>
               </div>
 
               {/* Distances */}
               <div>
-                <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
+                <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#8C9BAE]">
                   Cự ly thi đấu
                 </span>
-                <span className="block font-heading font-black text-sm lg:text-base text-[#18233A]">
+                <span className="block font-heading font-black text-xs sm:text-sm lg:text-base text-[#18233A]">
                   5K · 10K · 21K
                 </span>
-                <span className="block text-[11px] text-[#526077]">Cung đường chuẩn Sala</span>
+                <span className="block text-[10px] text-[#526077]">Cung đường chuẩn Sala</span>
               </div>
 
               {/* Special Category */}
               <div>
-                <span className="block text-[10px] font-heading font-bold uppercase tracking-wider text-[#F26522]">
+                <span className="block text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-wider text-[#F26522]">
                   Đặc quyền
                 </span>
-                <span className="block font-heading font-black text-sm lg:text-base text-[#18233A]">
+                <span className="block font-heading font-black text-xs sm:text-sm lg:text-base text-[#18233A]">
                   Tiếp sức gia đình
                 </span>
-                <span className="block text-[11px] text-[#526077]">Đội hình 3 thế hệ</span>
+                <span className="block text-[10px] text-[#526077]">Đội hình 3 thế hệ</span>
               </div>
             </div>
 
             {/* Action CTAs */}
-            <div className="mt-3.5 lg:mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="mt-3 lg:mt-3.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <button
                 onClick={onRegisterClick}
-                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-xs hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#F26522] hover:bg-[#D95314] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-xs hover:shadow-md transition-all active:scale-[0.98] cursor-pointer"
               >
                 <span>Đăng ký tham gia</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -153,65 +154,21 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
 
               <button
                 onClick={onExploreClick}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-transparent hover:bg-black/5 text-[#18233A] border border-[#18233A]/20 hover:border-[#18233A] font-heading font-bold text-xs tracking-wide uppercase transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-transparent hover:bg-black/5 text-[#18233A] border border-[#18233A]/20 hover:border-[#18233A] font-heading font-bold text-xs tracking-wide uppercase transition-all cursor-pointer"
               >
                 <span>Xem cự ly & lộ trình</span>
                 <ChevronRight className="w-3.5 h-3.5 text-[#8C9BAE]" />
               </button>
             </div>
 
-            {/* Editorial 2-Tier Countdown Bar */}
-            <div className="mt-3 lg:mt-3.5 w-full max-w-xl">
-              <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 px-3.5 py-2 sm:px-4 sm:py-2.5 bg-white/80 backdrop-blur-xs border border-[#18233A]/8 rounded-2xl shadow-[0_2px_8px_rgba(24,35,58,0.03)]">
-                
-                {/* Main Countdown Group */}
-                <div className="flex items-center gap-3.5 sm:gap-5">
-                  {/* Primary Highlight: CÒN {days} NGÀY */}
-                  <div className="flex items-center gap-2 text-[#F26522] font-heading font-bold text-xs sm:text-sm tracking-wide shrink-0">
-                    <Clock className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#F26522] shrink-0" />
-                    <span>
-                      CÒN <strong className="text-base sm:text-lg font-black text-[#F26522] font-mono tracking-tight ml-0.5">{timeLeft.days} NGÀY</strong>
-                    </span>
-                  </div>
-
-                  {/* Subtle Divider */}
-                  <div className="h-6 w-px bg-[#EEE5D7] hidden xs:block" />
-
-                  {/* 2nd Tier: HH : MM : SS with labels below */}
-                  <div className="flex items-center gap-1.5 font-mono tabular-nums">
-                    <div className="flex flex-col items-center min-w-[28px] sm:min-w-[32px]">
-                      <strong className="text-[#18233A] font-black text-base sm:text-lg leading-none">
-                        {String(timeLeft.hours).padStart(2, '0')}
-                      </strong>
-                      <span className="text-[9px] sm:text-[10px] text-[#8C9BAE] font-sans font-medium mt-0.5">giờ</span>
-                    </div>
-
-                    <span className="text-[#B2BAC5] text-base leading-none font-bold pb-2.5">:</span>
-
-                    <div className="flex flex-col items-center min-w-[28px] sm:min-w-[32px]">
-                      <strong className="text-[#18233A] font-black text-base sm:text-lg leading-none">
-                        {String(timeLeft.minutes).padStart(2, '0')}
-                      </strong>
-                      <span className="text-[9px] sm:text-[10px] text-[#8C9BAE] font-sans font-medium mt-0.5">phút</span>
-                    </div>
-
-                    <span className="text-[#B2BAC5] text-base leading-none font-bold pb-2.5">:</span>
-
-                    <div className="flex flex-col items-center min-w-[28px] sm:min-w-[32px]">
-                      <strong className="text-[#18233A] font-black text-base sm:text-lg leading-none">
-                        {String(timeLeft.seconds).padStart(2, '0')}
-                      </strong>
-                      <span className="text-[9px] sm:text-[10px] text-[#8C9BAE] font-sans font-medium mt-0.5">giây</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Supporting Campaign Tagline */}
-                <div className="text-[11px] sm:text-xs text-[#526077] font-sans font-medium tracking-normal hidden md:block">
-                  Kỷ niệm 45 năm · Tiếp bước tương lai
-                </div>
-
-              </div>
+            {/* Refined Split-Flap Flip Countdown Timer */}
+            <div className="mt-3 lg:mt-3.5 pt-0.5">
+              <FlipCountdown
+                days={timeLeft.days}
+                hours={timeLeft.hours}
+                minutes={timeLeft.minutes}
+                seconds={timeLeft.seconds}
+              />
             </div>
 
           </div>
@@ -221,7 +178,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
             <div className="relative mx-auto max-w-sm lg:max-w-none">
               
               {/* Main Artwork Container (Tightly constrained height so it never exceeds 1 viewport) */}
-              <div className="relative rounded-2xl overflow-hidden bg-[#18233A] shadow-xl border border-[#EEE5D7]/70 aspect-[4/4.2] max-h-[350px] xl:max-h-[390px] w-full mx-auto">
+              <div className="relative rounded-2xl overflow-hidden bg-[#18233A] shadow-xl border border-[#EEE5D7]/70 aspect-[4/4] max-h-[320px] xl:max-h-[350px] w-full mx-auto">
                 
                 {/* Athletic Lifestyle Photography */}
                 <img
