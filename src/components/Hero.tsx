@@ -160,16 +160,58 @@ export const Hero: React.FC<HeroProps> = ({ onRegisterClick, onExploreClick }) =
               </button>
             </div>
 
-            {/* Live Countdown Micro Ticker */}
-            <div className="mt-2.5 lg:mt-3 inline-flex items-center gap-3 px-3 py-1 rounded-lg bg-[#EEE5D7]/50 border border-[#EEE5D7] self-start text-[11px] font-mono text-[#18233A]">
-              <span className="flex items-center gap-1.5 font-bold text-[#F26522]">
-                <Clock className="w-3.5 h-3.5" />
-                <span>ĐẾM NGƯỢC:</span>
-              </span>
-              <span className="font-bold text-[#18233A]">
-                {timeLeft.days}d : {String(timeLeft.hours).padStart(2, '0')}h : {String(timeLeft.minutes).padStart(2, '0')}m : {String(timeLeft.seconds).padStart(2, '0')}s
-              </span>
-              <span className="text-[#8C9BAE] hidden sm:inline">| Kỷ lục 45 năm tiếp nối</span>
+            {/* Editorial 2-Tier Countdown Bar */}
+            <div className="mt-3 lg:mt-3.5 w-full max-w-xl">
+              <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 px-3.5 py-2 sm:px-4 sm:py-2.5 bg-white/80 backdrop-blur-xs border border-[#18233A]/8 rounded-2xl shadow-[0_2px_8px_rgba(24,35,58,0.03)]">
+                
+                {/* Main Countdown Group */}
+                <div className="flex items-center gap-3.5 sm:gap-5">
+                  {/* Primary Highlight: CÒN {days} NGÀY */}
+                  <div className="flex items-center gap-2 text-[#F26522] font-heading font-bold text-xs sm:text-sm tracking-wide shrink-0">
+                    <Clock className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#F26522] shrink-0" />
+                    <span>
+                      CÒN <strong className="text-base sm:text-lg font-black text-[#F26522] font-mono tracking-tight ml-0.5">{timeLeft.days} NGÀY</strong>
+                    </span>
+                  </div>
+
+                  {/* Subtle Divider */}
+                  <div className="h-6 w-px bg-[#EEE5D7] hidden xs:block" />
+
+                  {/* 2nd Tier: HH : MM : SS with labels below */}
+                  <div className="flex items-center gap-1.5 font-mono tabular-nums">
+                    <div className="flex flex-col items-center min-w-[28px] sm:min-w-[32px]">
+                      <strong className="text-[#18233A] font-black text-base sm:text-lg leading-none">
+                        {String(timeLeft.hours).padStart(2, '0')}
+                      </strong>
+                      <span className="text-[9px] sm:text-[10px] text-[#8C9BAE] font-sans font-medium mt-0.5">giờ</span>
+                    </div>
+
+                    <span className="text-[#B2BAC5] text-base leading-none font-bold pb-2.5">:</span>
+
+                    <div className="flex flex-col items-center min-w-[28px] sm:min-w-[32px]">
+                      <strong className="text-[#18233A] font-black text-base sm:text-lg leading-none">
+                        {String(timeLeft.minutes).padStart(2, '0')}
+                      </strong>
+                      <span className="text-[9px] sm:text-[10px] text-[#8C9BAE] font-sans font-medium mt-0.5">phút</span>
+                    </div>
+
+                    <span className="text-[#B2BAC5] text-base leading-none font-bold pb-2.5">:</span>
+
+                    <div className="flex flex-col items-center min-w-[28px] sm:min-w-[32px]">
+                      <strong className="text-[#18233A] font-black text-base sm:text-lg leading-none">
+                        {String(timeLeft.seconds).padStart(2, '0')}
+                      </strong>
+                      <span className="text-[9px] sm:text-[10px] text-[#8C9BAE] font-sans font-medium mt-0.5">giây</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Supporting Campaign Tagline */}
+                <div className="text-[11px] sm:text-xs text-[#526077] font-sans font-medium tracking-normal hidden md:block">
+                  Kỷ niệm 45 năm · Tiếp bước tương lai
+                </div>
+
+              </div>
             </div>
 
           </div>
